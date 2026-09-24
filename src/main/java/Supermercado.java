@@ -9,9 +9,9 @@ public class Supermercado {
 
     //Creacion listas
 
-    private List<Clientes> listaClientes;
+    private List<Cliente> listaClientes;
     private List<Compra> listaCompra;
-    private List<Productos> listaProductos;
+    private List<Producto> listaProductos;
 
     //Constructor
     public Supermercado(String nombre, String direccion, int telefono) {
@@ -50,11 +50,11 @@ public class Supermercado {
         this.telefono = telefono;
     }
 
-    public List<Clientes> getListaClientes() {
+    public List<Cliente> getListaClientes() {
         return listaClientes;
     }
 
-    public void setListaClientes(List<Clientes> listaClientes) {
+    public void setListaClientes(List<Cliente> listaClientes) {
         this.listaClientes = listaClientes;
     }
 
@@ -66,11 +66,11 @@ public class Supermercado {
         this.listaCompra = listaCompra;
     }
 
-    public List<Productos> getListaProductos() {
+    public List<Producto> getListaProductos() {
         return listaProductos;
     }
 
-    public void setListaProductos(List<Productos> listaProductos) {
+    public void setListaProductos(List<Producto> listaProductos) {
         this.listaProductos = listaProductos;
     }
 
@@ -85,4 +85,5 @@ public class Supermercado {
                 ", Lista de Compras: "+listaCompra+
                 ", Lista de Productos: "+listaProductos;
     }
+    
 }
