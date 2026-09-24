@@ -79,10 +79,16 @@ public class Aplicacion {
                         System.out.println("1. Mostrar lista de clientes.");
                         System.out.println("2. Mostrar cliente por documento.");
                         int eleccion= sc.nextInt();
-
-                        if (eleccion==2){
-                            System.out.println("Ingrese el documento: ");
-                            documento = sc.nextInt();
+                        if (eleccion== 1){
+                            for(Cliente cliente: supermercado.getListaClientes()){
+                                System.out.println(cliente);
+                            }
+                        } else if (eleccion==2) {
+                            System.out.print("Ingrese el documento del cliente: ");
+                            documento= sc.nextInt();
+                            Cliente cliente=supermercado.mostrarCliente(documento);
+                        }else {
+                            System.out.println("Opción no valida.");
                         }
                         break;
 
