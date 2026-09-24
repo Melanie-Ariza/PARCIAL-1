@@ -85,5 +85,42 @@ public class Supermercado {
                 ", Lista de Compras: "+listaCompra+
                 ", Lista de Productos: "+listaProductos;
     }
-    
+    //Metodo para verificar Clientes
+    public boolean verificarCliente (int documento) {
+        boolean existe = false;
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getDocumento() == documento) {
+                existe = true;
+
+            }
+        }
+        return existe;
+
+    }
+    //Metodo agregar Clientes
+    public boolean agregarEstudiantes(Cliente cliente){
+        boolean agregado = false;
+        boolean existe = verificarCliente(cliente.getDocumento());
+        if(existe==false){
+            listaClientes.add(cliente);
+            agregado= true;
+
+        }
+        return agregado;
+    }
+    //Metodo para Actualizar
+    public boolean actulizarCliente(int documento, Cliente clienteActualizado){
+        boolean estaActualizado = false;
+        for(Cliente cliente: listaClientes){
+            if(cliente.getDocumento()== documento){
+                cliente.setNombre(clienteActualizado.getNombre());
+                cliente.setDocumento(clienteActualizado.getDocumento());
+                cliente.setTelefono(clienteActualizado.getTelefono());
+                cliente.setCorreo(clienteActualizado.getCorreo());
+                estaActualizado= true;
+                break;
+            }
+        }
+        return estaActualizado;
+    }
 }
