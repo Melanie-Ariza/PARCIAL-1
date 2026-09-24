@@ -7,7 +7,8 @@ public class Compra {
 
     //Constructor
 
-    public Compra(int codigoCompra, int fechaCompra, double valorTotal, MetodoPago metodoPago) {
+
+    public Compra(int codigoCompra, int fechaCompra, double valorTotal) {
         this.codigoCompra = codigoCompra;
         this.fechaCompra = fechaCompra;
         this.valorTotal = valorTotal;
