@@ -129,7 +129,7 @@ public class Supermercado {
     }
 
     //Metodo para eliminar cliente
-    public boolean eliminarCliente(int documento) {
+    public boolean eliminarcliente(int documento) {
         boolean esEliminado = false;
         for (Cliente cliente : listaClientes) {
             if (cliente.getDocumento() == documento) {
@@ -150,6 +150,24 @@ public class Supermercado {
         }
         return cliente1;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //Metodo para verificar compra
 
     public boolean verificarCompra (int codigoCompra) {
@@ -175,6 +193,7 @@ public class Supermercado {
         return agregado;
     }
     //Metodo para Actualizar
+
     public boolean actulizarCompra(int codigoCompra, Compra compraActualizada) {
         boolean estaActualizado = false;
         for (Compra compra : listaCompra) {
@@ -192,11 +211,11 @@ public class Supermercado {
     }
 
     //Metodo para eliminar compra
-    public boolean eliminarCompra(int documento) {
+    public boolean eliminarCompra(int codigoCompra) {
         boolean esEliminado= false;
-        for (Cliente cliente: listaClientes){
-            if (cliente.getDocumento()==documento){
-                listaClientes.remove(cliente);
+        for (Compra compra: listaCompra) {
+            if (compra.getCodigoCompra()==codigoCompra) {
+                listaCompra.remove(compra);
                 esEliminado=true;
             }
         }
@@ -204,13 +223,18 @@ public class Supermercado {
     }
 
     //Metodo para mostrar compra
-    public Cliente mostrarCompra(int documento) {
-        Cliente cliente1=null;
-        for (Cliente cliente : listaClientes) {
-            if (cliente.getDocumento() == documento) {
-                cliente1 = cliente;
+    public void mostrarCompra(int eleccion, int documento){
+        if (eleccion==1){
+            List<Cliente>lista= getListaClientes();
+            System.out.println(lista);
+        } else if (eleccion==2) {
+            for (Cliente profesor: listaClientes){
+                if (profesor.getDocumento()==documento){
+                    System.out.println(profesor);
+                }
             }
+        }else {
+            System.out.println("Opción no valida");
         }
-        return cliente1;
     }
 }
