@@ -210,20 +210,20 @@ public class Supermercado {
         return estaActualizado;
     }
 
-    //Metodo para eliminar cliente
-    public boolean eliminarcliente(int documento) {
+    //Metodo para eliminar compra
+    public boolean eliminarCompra(int codigoCompra) {
         boolean esEliminado= false;
-        for (Cliente cliente: listaClientes){
-            if (cliente.getDocumento()==documento){
-                listaClientes.remove(cliente);
+        for (Compra compra: listaCompra) {
+            if (compra.getCodigoCompra()==codigoCompra) {
+                listaCompra.remove(compra);
                 esEliminado=true;
             }
         }
         return esEliminado;
     }
 
-    //Metodo para mostrar clientes
-    public void mostrarCliente(int eleccion, int documento){
+    //Metodo para mostrar compra
+    public void mostrarCompra(int eleccion, int documento){
         if (eleccion==1){
             List<Cliente>lista= getListaClientes();
             System.out.println(lista);
