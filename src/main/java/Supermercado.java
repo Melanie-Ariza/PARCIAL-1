@@ -87,7 +87,8 @@ public class Supermercado {
                 ", Lista de Compras: " + listaCompras +
                 ", Lista de Productos: " + listaProductos;
     }
-// ===================== CLIENTE ========================
+
+    // ===================== CLIENTE ========================
     //Metodo para verificar Clientes
     public boolean verificarCliente(int documento) {
         boolean existe = false;
@@ -100,6 +101,7 @@ public class Supermercado {
         return existe;
 
     }
+
     //Metodo agregar Clientes
     public boolean agregarCliente(Cliente cliente) {
         boolean agregado = false;
@@ -143,7 +145,7 @@ public class Supermercado {
 
     //Metodo para mostrar clientes por documento
     public Cliente mostrarCliente(int documento) {
-        Cliente cliente1=null;
+        Cliente cliente1 = null;
         for (Cliente cliente : listaClientes) {
             if (cliente.getDocumento() == documento) {
                 cliente1 = cliente;
@@ -156,7 +158,7 @@ public class Supermercado {
 
     //Metodo para verificar producto
 
-    public boolean verificarProductos (int codigoProductos) {
+    public boolean verificarProductos(int codigoProductos) {
         boolean existe = false;
         for (Producto producto : listaProductos) {
             if (producto.getCodigoProducto() == codigoProductos) {
@@ -167,13 +169,14 @@ public class Supermercado {
         return existe;
 
     }
+
     //Metodo agregar Productos
     public boolean agregarProducto(Producto producto) {
         boolean agregado = false;
         boolean existe = verificarProductos(producto.getCodigoProducto());
-        if(existe==false){
+        if (existe == false) {
             listaProductos.add(producto);
-            agregado= true;
+            agregado = true;
 
         }
         return agregado;
@@ -197,11 +200,11 @@ public class Supermercado {
 
     //Metodo para eliminar producto
     public boolean eliminarProducto(int codigoProducto) {
-        boolean esEliminado= false;
-        for (Producto producto: listaProductos) {
-            if (producto.getCodigoProducto()==codigoProducto) {
+        boolean esEliminado = false;
+        for (Producto producto : listaProductos) {
+            if (producto.getCodigoProducto() == codigoProducto) {
                 listaProductos.remove(producto);
-                esEliminado=true;
+                esEliminado = true;
                 break;
             }
         }
@@ -210,7 +213,7 @@ public class Supermercado {
 
     //Metodo para mostrar producto
     public Producto mostrarProducto(int codigoProducto) {
-        Producto producto1=null;
+        Producto producto1 = null;
         for (Producto producto : listaProductos) {
             if (producto.getCodigoProducto() == codigoProducto) {
                 producto1 = producto;
@@ -223,7 +226,7 @@ public class Supermercado {
 
     //Metodo para verificar compra
 
-    public boolean verificarCompra (int codigoCompra) {
+    public boolean verificarCompra(int codigoCompra) {
         boolean existe = false;
         for (Compra compra : listaCompras) {
             if (compra.getCodigoCompra() == codigoCompra) {
@@ -234,13 +237,14 @@ public class Supermercado {
         return existe;
 
     }
+
     //Metodo agregar Compra
     public boolean agregarCompra(Compra compra) {
         boolean agregado = false;
         boolean existe = verificarCompra(compra.getCodigoCompra());
-        if(existe){
+        if (existe) {
             listaCompras.add(compra);
-            agregado= true;
+            agregado = true;
         }
         return agregado;
     }
@@ -264,11 +268,11 @@ public class Supermercado {
 
     //Metodo para eliminar compra
     public boolean eliminarCompra(int codigoCompra) {
-        boolean esEliminado= false;
-        for (Compra compra: listaCompras){
-            if (compra.getCodigoCompra()==codigoCompra){
+        boolean esEliminado = false;
+        for (Compra compra : listaCompras) {
+            if (compra.getCodigoCompra() == codigoCompra) {
                 listaCompras.remove(compra);
-                esEliminado=true;
+                esEliminado = true;
                 break;
             }
         }
@@ -277,7 +281,7 @@ public class Supermercado {
 
     //Metodo para mostrar compra
     public Compra mostrarCompra(int codigoCompra) {
-        Compra compra1=null;
+        Compra compra1 = null;
         for (Compra compra : listaCompras) {
             if (compra.getCodigoCompra() == codigoCompra) {
                 compra1 = compra;
@@ -290,45 +294,61 @@ public class Supermercado {
     public double ventasPorFecha(Date fechaCompra) {
         double acumulado = 0;
         for (Compra compra : listaCompras) {
-            if (compra.getFechaCompra()==fechaCompra) {
+            if (compra.getFechaCompra() == fechaCompra) {
                 acumulado += compra.getValorTotal();
             }
         }
         return acumulado;
     }
 
-    //Metodo comenzar carrito
-    public void comenzarCarro(){
-        Scanner sc= new Scanner(System.in);
-        double valorTotal=0;
-        int opcion=1;
+    private ArrayList<DetalleCompra>detalles =new ArrayList<>();
+    private double valorTotal = 0;
+
+    public void comenzarCarro() {
+        Scanner sc = new Scanner(System.in);
+        int opcion = 1;
+
         do {
-            for (Producto producto:listaProductos){
+            for (Producto producto : listaProductos) {
                 System.out.println(producto);
             }
 
             System.out.print("Ingrese el código del producto que desea: ");
-            int codigoProducto= sc.nextInt();
-            for (Producto producto:listaProductos){
-                if (producto.getCodigoProducto()==codigoProducto){
+            int codigoProducto = sc.nextInt();
+
+            for (Producto producto : listaProductos) {
+                if (producto.getCodigoProducto() == codigoProducto) {
 
                     System.out.print("¿Qué cantidad desea?: ");
-                    int cantidadDeseada= sc.nextInt();
-                    if (cantidadDeseada <= producto.getCantidad()){
-                        //Sumar al valor total
-                        //Restar del stock
+                    int cantidadDeseada = sc.nextInt();
+
+                    // Uso de la validación hayStock del producto
+                    if (producto.hayStock(cantidadDeseada)) {
+
+                        // Reducir el stock del producto
+                        producto.reducirStock(cantidadDeseada);
+
+                        DetalleCompra nuevoDetalle = new DetalleCompra(producto, cantidadDeseada);
+                        detalles.add(nuevoDetalle);
+
                         System.out.println("Hecho.");
-                    }else {
+                    } else {
                         System.out.println("No hay suficiente stock disponible.");
                     }
                     break;
                 }
-
             }
             System.out.println("¿Desea continuar comprando? (1: Sí / 2: No)");
-            opcion= sc.nextInt();
-        }while (opcion!=2);
-        System.out.println("Valor total: "+valorTotal);
+            opcion = sc.nextInt();
+        } while (opcion != 2);
+        calcularTotal();
+        System.out.println("Valor total: " + valorTotal);
     }
 
+    private void calcularTotal() {
+        this.valorTotal = 0.0;
+        for (DetalleCompra detalle : detalles) {
+            this.valorTotal += detalle.calcularSubtotal();
+        }
+    }
 }

@@ -52,6 +52,8 @@ public class Aplicacion {
         opcion= sc.nextInt();
         sc.nextLine();
 
+        //=================MENU CLIENTES============================
+
         if (opcion==1){
             do {
                 System.out.println("======= CLIENTE =======");
@@ -144,6 +146,8 @@ public class Aplicacion {
                         break;
                 }
             }while (opcion!=0);
+
+            //MENU PARA EL PERSONAl
 
         
         } else if (opcion==2) {

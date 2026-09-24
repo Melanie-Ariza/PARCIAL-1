@@ -104,7 +104,7 @@ public class Compra {
         return agregado;
     }
 
-    private void calcularTotal() {
+    public void calcularTotal() {
         this.valorTotal = 0.0;
         for (DetalleCompra detalle : detalles) {
             this.valorTotal += detalle.calcularSubtotal();
