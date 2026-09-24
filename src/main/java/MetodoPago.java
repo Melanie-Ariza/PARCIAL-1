@@ -1,3 +1,3 @@
-enum class MetodoPago {
+public enum MetodoPago {
     TARJETA, TRANSFERENCIA, EFECTIVO
 }
