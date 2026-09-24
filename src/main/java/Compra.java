@@ -63,6 +63,22 @@ public class Compra {
         this.valorTotal = valorTotal;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<DetalleCompra> getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(List<DetalleCompra> detalles) {
+        this.detalles = detalles;
+    }
+
     //toString
 
 
