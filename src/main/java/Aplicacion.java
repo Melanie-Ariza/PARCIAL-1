@@ -58,6 +58,9 @@ public class Aplicacion {
                 sc.nextLine();
                 switch (opcion){
                     case 1:
+                        System.out.println("------- Agregar cliente -------\n");
+
+
                         break;
                     case 2:
                         break;
