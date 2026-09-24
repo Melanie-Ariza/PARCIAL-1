@@ -1,14 +1,28 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Supermercado {
     //Atributos
     String nombre;
     String direccion;
     int telefono;
 
+    //Creacion listas
+
+    private List<Clientes> listaClientes;
+    private List<Compra> listaCompra;
+    private List<Productos> listaProductos;
+
     //Constructor
     public Supermercado(String nombre, String direccion, int telefono) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
+
+        //Inicializar listas
+        listaClientes = new ArrayList<>();
+        listaProductos = new ArrayList<>();
+        listaCompra = new ArrayList<>();
     }
     //Getter y setter
 
@@ -35,12 +49,40 @@ public class Supermercado {
     public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
+
+    public List<Clientes> getListaClientes() {
+        return listaClientes;
+    }
+
+    public void setListaClientes(List<Clientes> listaClientes) {
+        this.listaClientes = listaClientes;
+    }
+
+    public List<Compra> getListaCompra() {
+        return listaCompra;
+    }
+
+    public void setListaCompra(List<Compra> listaCompra) {
+        this.listaCompra = listaCompra;
+    }
+
+    public List<Productos> getListaProductos() {
+        return listaProductos;
+    }
+
+    public void setListaProductos(List<Productos> listaProductos) {
+        this.listaProductos = listaProductos;
+    }
+
     //toString
     @Override
     public String toString() {
         return "Supermercado \n" +
                 "Nombre:"+nombre+
                 ", Dirección: "+direccion+
-                ", Telefono: "+telefono;
+                ", Telefono: "+telefono+
+                ", Lista de Clientes: "+listaClientes+
+                ", Lista de Compras: "+listaCompra+
+                ", Lista de Productos: "+listaProductos;
     }
 }
