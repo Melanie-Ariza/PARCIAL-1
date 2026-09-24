@@ -4,6 +4,8 @@ public class Clientes {
     private int telefono;
     private String correo;
 
+
+
     //CONSTRUCTOR
     public Clientes(String nombre, int documento, int telefono, String correo) {
         this.nombre = nombre;
