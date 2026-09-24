@@ -63,6 +63,22 @@ public class Compra {
         this.valorTotal = valorTotal;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<DetalleCompra> getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(List<DetalleCompra> detalles) {
+        this.detalles = detalles;
+    }
+
     //toString
 
 
@@ -78,13 +94,14 @@ public class Compra {
 
     //Metodos
     public boolean agregarProducto(Producto producto, int cantidad) {
+        boolean agregado = false;
         if (producto.hayStock(cantidad)) {
             detalles.add(new DetalleCompra(producto, cantidad));
             producto.reducirStock(cantidad);
             calcularTotal();
-            return true;
+            agregado = true;
         }
-        return false;
+        return agregado;
     }
 
     private void calcularTotal() {
