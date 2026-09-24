@@ -210,31 +210,27 @@ public class Supermercado {
         return estaActualizado;
     }
 
-    //Metodo para eliminar cliente
-    public boolean eliminarcliente(int documento) {
+    //Metodo para eliminar compra
+    public boolean eliminarCompra(int codigoCompra) {
         boolean esEliminado= false;
-        for (Cliente cliente: listaClientes){
-            if (cliente.getDocumento()==documento){
-                listaClientes.remove(cliente);
+        for (Compra compra: listaCompra){
+            if (compra.getCodigoCompra()==codigoCompra){
+                listaCompra.remove(compra);
                 esEliminado=true;
             }
         }
         return esEliminado;
     }
 
-    //Metodo para mostrar clientes
-    public void mostrarCliente(int eleccion, int documento){
-        if (eleccion==1){
-            List<Cliente>lista= getListaClientes();
-            System.out.println(lista);
-        } else if (eleccion==2) {
-            for (Cliente profesor: listaClientes){
-                if (profesor.getDocumento()==documento){
-                    System.out.println(profesor);
-                }
+    //Metodo para mostrar compra
+    public Compra mostrarCompra(int codigoCompra) {
+        Compra compra1=null;
+        for (Compra compra : listaCompra) {
+            if (compra.getCodigoCompra() == codigoCompra) {
+                compra1 = compra;
             }
-        }else {
-            System.out.println("Opción no valida");
         }
+        return compra1;
     }
+
 }
