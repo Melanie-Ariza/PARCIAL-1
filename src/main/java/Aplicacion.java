@@ -58,7 +58,7 @@ public class Aplicacion {
                 System.out.println("1. Agregar cliente.");
                 System.out.println("2. Comenzar compra.");
                 System.out.println("3. Actualizar compra.");
-                System.out.println("6. Eliminar compra.");
+                System.out.println("4. Eliminar compra.");
                 System.out.print("Seleccione la opción: ");
                 opcion= sc.nextInt();
                 sc.nextLine();
@@ -83,12 +83,71 @@ public class Aplicacion {
                         }
                         break;
                     case 2:
+                        System.out.println("------- Comenzar compra -------\n");
+                        supermercado.comenzarCarro();
+                        break;
+                    case 3:
+                        System.out.println("------- Actualizar compra -------\n");
 
+                        System.out.print("Codigo de compra a actualizar: ");
+                        int codigoCompra= sc.nextInt();
+                        sc.nextLine();
+
+                        System.out.print("Nuevo fecha de compra: ");
+                        String fechaTexto= sc.nextLine();
+                        SimpleDateFormat formato= new SimpleDateFormat("dd/MM/yyyy");
+                        Date nuevaFecha= formato.parse(fechaTexto);
+
+                        System.out.print("Nuevo valor total: ");
+                        double nuevoValorTotal= sc.nextDouble();
+                        sc.nextLine();
+
+                        System.out.println("Nuevo metodo de pago: \n"+
+                                "1. Tarjeta"+
+                                "  2. Transferencia"+
+                                "  3. Efectivo");
+                        int metodo= sc.nextInt();
+
+                        MetodoPago nuevoMetodoPago = null;
+                        if (metodo==1){
+                            nuevoMetodoPago= MetodoPago.TARJETA;
+                        } else if (metodo==2) {
+                            nuevoMetodoPago=MetodoPago.TRANSFERENCIA;
+                        } else if (metodo==3) {
+                            nuevoMetodoPago= MetodoPago.EFECTIVO;
+                        }else {
+                            System.out.println("Opción no valida.");
+                        }
+
+                        Compra compraActualizada= new Compra(codigoCompra, nuevaFecha, nuevoValorTotal, nuevoMetodoPago);
+
+                        if (supermercado.actulizarCompra(codigoCompra, compraActualizada)){
+                            System.out.println("Compra actualizada correctamente.");
+                        } else {
+                            System.out.println("Compra no encontrada.");
+                        }
+                        break;
+                    case 4:
+                        System.out.println("------- Eliminar compra -------\n");
+
+                        System.out.print("Ingrese el codigo de compra: ");
+                        codigoCompra= sc.nextInt();
+                        boolean eliminado= supermercado.eliminarCompra(codigoCompra);
+                        if (eliminado){
+                            System.out.println("Compra eliminada correctamente.");
+                        }else {
+                            System.out.println("Compra no encontrada.");
+                        }
+                        break;
+                    default:
+                        System.out.println("Opción no valida.");
+                        break;
                 }
             }while (opcion!=0);
 
         
         } else if (opcion==2) {
+
             do {
                 System.out.println("======= PERSONAL =======");
 
@@ -410,8 +469,9 @@ public class Aplicacion {
                             System.out.println("Opción no valida.");
                         }
                         break;
-
                     default:
+                        System.out.println("Opción no valida.");
+                        break;
                 }
             }while (opcion!=0);
         }else{
