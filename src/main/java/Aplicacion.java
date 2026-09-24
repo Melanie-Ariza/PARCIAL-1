@@ -62,7 +62,7 @@ public class Aplicacion {
                     case 2:
                         break;
                 }
-            }
+            }while (opcion!=0);
         }else{
             System.out.println("Opción no valida.");
         }
