@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.Scanner;
 
 public class Aplicacion {
@@ -6,6 +7,18 @@ public class Aplicacion {
         //Objeto supermercado
         Supermercado supermercado= new Supermercado("MarketPlus", "Carrera 18 #29 No.10", 301610544);
 
+        //Objeto clientes
+        Cliente cliente1= new Cliente("Ana", 123, 1234546, "ana@gmail.com");
+
+        //Objeto compra
+        Compra compra= new Compra(123, new Date(),32000, MetodoPago.EFECTIVO );
+
+        //Objetos productos
+        Producto producto_1= new Producto(111, "Arroz", 20000, 50, Categoria.ALIMENTOS, compra);
+        Producto producto_2= new Producto(222, "Leche", 12000, 50, Categoria.ALIMENTOS, compra);
+        Producto producto_3= new Producto(333, "Crema demtal", 5000, 50, Categoria.ALIMENTOS, compra);
+
+        System.out.println(compra);
         //Menu
         int opcion;
         System.out.println("======= BIENVENIDO =======");
@@ -60,16 +73,52 @@ public class Aplicacion {
                     case 1:
                         System.out.println("------- Agregar cliente -------\n");
 
-
+                        System.out.print("Nombre: ");
+                        String nombre= sc.nextLine();
+                        System.out.print("Documento: ");
+                        int documento= sc.nextInt();
+                        System.out.print("Telefono: ");
+                        int telefono= sc.nextInt();
+                        sc.nextLine();
+                        System.out.print("Correo: ");
+                        String correo= sc.nextLine();
+                        Cliente cliente= new Cliente(nombre, documento, telefono, correo);
+                        if (supermercado.agregarCliente(cliente)){
+                            System.out.println("Cliente agregado correctamente.");
+                        }else {
+                            System.out.println("Cliente ya existente.");
+                        }
                         break;
                     case 2:
+                        System.out.println("------- Actualizar cliente -------\n");
+
+                        System.out.print("Documento de profesor a actualizar: ");
+                        documento= sc.nextInt();
+                        sc.nextLine();
+
+                        System.out.print("Nuevo nombre: ");
+                        String nuevoNombre= sc.nextLine();
+
+                        System.out.print("Nuevo telefono: ");
+                        int nuevoTelefono= sc.nextInt();
+                        sc.nextLine();
+
+                        System.out.print("Nuevo correo: ");
+                        String nuevoCorreo= sc.nextLine();
+
+                        Cliente clienteActualizado=new Cliente(nuevoNombre, documento, nuevoTelefono, nuevoCorreo);
+                        if (supermercado.actulizarCliente(documento, clienteActualizado)){
+                            System.out.println("Cliente actualizado correctamente.");
+                        }else {
+                            System.out.println("Cliente no encontrado.");
+                        }
                         break;
                     case 3:
                         System.out.println("------- Eliminar cliente -------\n");
 
                         System.out.println("Ingrese el documento del cliente: ");
-                        int documento= sc.nextInt();
-                        boolean eliminado= supermercado.eliminarcliente(documento);
+                        documento= sc.nextInt();
+                        boolean eliminado= supermercado.eliminarCliente(documento);
                         if (eliminado){
                             System.out.println("Cliente eliminado correctamente.");
                         }else {
@@ -83,13 +132,13 @@ public class Aplicacion {
                         System.out.println("2. Mostrar cliente por documento.");
                         int eleccion= sc.nextInt();
                         if (eleccion== 1){
-                            for(Cliente cliente: supermercado.getListaClientes()){
-                                System.out.println(cliente);
+                            for(Cliente cliente2: supermercado.getListaClientes()){
+                                System.out.println(cliente2);
                             }
                         } else if (eleccion==2) {
                             System.out.print("Ingrese el documento del cliente: ");
                             documento= sc.nextInt();
-                            Cliente cliente=supermercado.mostrarCliente(documento);
+                            Cliente cliente2=supermercado.mostrarCliente(documento);
                         }else {
                             System.out.println("Opción no valida.");
                         }

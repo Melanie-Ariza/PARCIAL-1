@@ -17,7 +17,7 @@ public class Cliente {
 
 
     //CONSTRUCTOR
-    public Cliente(String nombre, int documento, int telefono, String correo, Compra compra) {
+    public Cliente(String nombre, int documento, int telefono, String correo) {
         this.nombre = nombre;
         this.documento = documento;
         this.telefono = telefono;
