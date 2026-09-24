@@ -150,4 +150,91 @@ public class Supermercado {
         }
         return cliente1;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //Metodo para verificar compra
+
+    public boolean verificarCompra (int codigoCompra) {
+        boolean existe = false;
+        for (Compra compra : listaCompra) {
+            if (compra.getCodigoCompra() == codigoCompra) {
+                existe = true;
+
+            }
+        }
+        return existe;
+
+    }
+    //Metodo agregar Compra
+    public boolean agregarCompra(Compra compra) {
+        boolean agregado = false;
+        boolean existe = verificarCliente(compra.getCodigoCompra());
+        if(existe==false){
+            listaCompra.add(compra);
+            agregado= true;
+
+        }
+        return agregado;
+    }
+    //Metodo para Actualizar
+
+    public boolean actulizarCompra(int codigoCompra, Compra compraActualizada) {
+        boolean estaActualizado = false;
+        for (Compra compra : listaCompra) {
+            if (compra.getCodigoCompra() == codigoCompra) {
+                compra.setFechaCompra(compraActualizada.getFechaCompra());
+                compra.setCodigoCompra(compraActualizada.getCodigoCompra());
+                compra.setValorTotal(compraActualizada.getValorTotal());
+                compra.setMetodoPago(compraActualizada.getMetodoPago());
+                estaActualizado = true;
+                break;
+            }
+        }
+
+        return estaActualizado;
+    }
+
+    //Metodo para eliminar cliente
+    public boolean eliminarcliente(int documento) {
+        boolean esEliminado= false;
+        for (Cliente cliente: listaClientes){
+            if (cliente.getDocumento()==documento){
+                listaClientes.remove(cliente);
+                esEliminado=true;
+            }
+        }
+        return esEliminado;
+    }
+
+    //Metodo para mostrar clientes
+    public void mostrarCliente(int eleccion, int documento){
+        if (eleccion==1){
+            List<Cliente>lista= getListaClientes();
+            System.out.println(lista);
+        } else if (eleccion==2) {
+            for (Cliente profesor: listaClientes){
+                if (profesor.getDocumento()==documento){
+                    System.out.println(profesor);
+                }
+            }
+        }else {
+            System.out.println("Opción no valida");
+        }
+    }
 }
