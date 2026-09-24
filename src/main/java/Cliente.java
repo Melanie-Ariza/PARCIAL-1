@@ -1,8 +1,7 @@
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Clientes {
+public class Cliente {
     private String nombre;
     private int documento;
     private int telefono;
@@ -10,7 +9,7 @@ public class Clientes {
 
     //Crear listas
     private List<Supermercado> listaSupermercado;
-    private List<Productos> listaProductos;
+    private List<Producto> listaProductos;
     private List<Compra> listaCompra;
 
     //Relacion Cliente con Compra
@@ -18,7 +17,7 @@ public class Clientes {
 
 
     //CONSTRUCTOR
-    public Clientes(String nombre, int documento, int telefono, String correo, Compra compra) {
+    public Cliente(String nombre, int documento, int telefono, String correo, Compra compra) {
         this.nombre = nombre;
         this.documento = documento;
         this.telefono = telefono;
@@ -73,9 +72,9 @@ public class Clientes {
 
     public void setListaSupermercado(List<Supermercado> listaSupermercado) { this.listaSupermercado = listaSupermercado; }
 
-    public List<Productos> getListaProductos() { return listaProductos; }
+    public List<Producto> getListaProductos() { return listaProductos; }
 
-    public void setListaProductos(List<Productos> listaProductos) { this.listaProductos = listaProductos;}
+    public void setListaProductos(List<Producto> listaProductos) { this.listaProductos = listaProductos;}
 
     public List<Compra> getListaCompra() { return listaCompra;}
 

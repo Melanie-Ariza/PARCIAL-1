@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Productos {
+public class Producto {
     //Atributos
     private int codigoProducto;
     private String nombre;
@@ -19,7 +19,7 @@ public class Productos {
     private List<Compra> listaCompra;
 
     //Constructor
-    public Productos(int codigoProducto, String nombre, double precioUnitario, int cantidad, Categoria categoria, Compra compra) {
+    public Producto(int codigoProducto, String nombre, double precioUnitario, int cantidad, Categoria categoria, Compra compra) {
         this.codigoProducto = codigoProducto;
         this.nombre = nombre;
         this.precioUnitario = precioUnitario;
