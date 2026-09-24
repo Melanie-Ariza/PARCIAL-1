@@ -80,7 +80,14 @@ public class Producto {
     //Metodos
     //validacion stock
     public boolean hayStock(int cantidadSolicitada) {
-        return this.cantidad >= cantidadSolicitada;
+        boolean siHay= false;
+        if (this.cantidad >= cantidadSolicitada) {
+            siHay = true;
+        } else {
+            siHay = false;
+        }
+
+        return siHay;
     }
 
     //Reducir stock tras compra
