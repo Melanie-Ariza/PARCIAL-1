@@ -1,18 +1,35 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Clientes {
     private String nombre;
     private int documento;
     private int telefono;
     private String correo;
 
+    //Crear listas
+    private List<Supermercado> listaSupermercado;
+    private List<Productos> listaProductos;
+    private List<Compra> listaCompra;
+
+    //Relacion Cliente con Compra
+    private Compra compra;
 
 
     //CONSTRUCTOR
-    public Clientes(String nombre, int documento, int telefono, String correo) {
+    public Clientes(String nombre, int documento, int telefono, String correo, Compra compra) {
         this.nombre = nombre;
         this.documento = documento;
         this.telefono = telefono;
         this.correo = correo;
+        this.compra = compra;
+
+        //Inicializar listas
+        listaSupermercado = new ArrayList<>();
+        listaProductos = new ArrayList<>();
+        listaCompra = new ArrayList<>();
     }
+
 
     //GET-SET
     public String getNombre() {
@@ -47,12 +64,35 @@ public class Clientes {
         this.correo = correo;
     }
 
+    public Compra getCompra() { return compra; }
+
+    public void setCompra(Compra compra) { this.compra = compra; }
+
+    public List<Supermercado> getListaSupermercado() { return listaSupermercado; }
+
+    public void setListaSupermercado(List<Supermercado> listaSupermercado) { this.listaSupermercado = listaSupermercado; }
+
+    public List<Productos> getListaProductos() { return listaProductos; }
+
+    public void setListaProductos(List<Productos> listaProductos) { this.listaProductos = listaProductos;}
+
+    public List<Compra> getListaCompra() { return listaCompra;}
+
+    public void setListaCompra(List<Compra> listaCompra) { this.listaCompra = listaCompra; }
+
     //TOSTRING
+
+
     @Override
     public String toString() {
         return nombre +
-                " documento: " + documento +
+                ", documento: " + documento +
                 ", telefono: " + telefono +
-                ", correo: " + correo;
+                ", correo: " + correo +
+                ", compra: " + compra +
+                ", listaSupermercado: " + listaSupermercado +
+                ", listaProductos: " + listaProductos +
+                ", listaCompra: " + listaCompra;
     }
 }
+
