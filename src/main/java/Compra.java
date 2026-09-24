@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Compra {
     //Atributos
@@ -6,14 +8,18 @@ public class Compra {
     private Date fechaCompra;
     private double valorTotal;
     private MetodoPago metodoPago;
+    private Cliente cliente;
+    private List<DetalleCompra> detalles;
 
     //Constructor
 
     public Compra(int codigoCompra, Date fechaCompra, double valorTotal, MetodoPago metodoPago) {
         this.codigoCompra = codigoCompra;
         this.fechaCompra = fechaCompra;
-        this.valorTotal = valorTotal;
+        this.valorTotal = 0.0;
         this.metodoPago = metodoPago;
+        this.cliente = cliente;
+        this.detalles = new ArrayList<>();
     }
 
     //Getters y setters
@@ -61,5 +67,23 @@ public class Compra {
                 ", Fecha de Compra: " + fechaCompra +
                 ", Valor Total De La Venta: " + valorTotal+
                 ", Método de Pago: " + metodoPago;
+    }
+
+    //Metodos
+    public boolean agregarProducto(Producto producto, int cantidad) {
+        if (producto.hayStock(cantidad)) {
+            detalles.add(new DetalleCompra(producto, cantidad));
+            producto.reducirStock(cantidad);
+            calcularTotal();
+            return true;
+        }
+        return false;
+    }
+
+    private void calcularTotal() {
+        this.valorTotal = 0.0;
+        for (DetalleCompra detalle : detalles) {
+            this.valorTotal += detalle.calcularSubtotal();
+        }
     }
 }

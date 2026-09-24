@@ -30,7 +30,6 @@ public class Cliente {
         listaCompra = new ArrayList<>();
     }
 
-
     //GET-SET
     public String getNombre() {
         return nombre;
@@ -93,6 +92,11 @@ public class Cliente {
                 ", listaSupermercado: " + listaSupermercado +
                 ", listaProductos: " + listaProductos +
                 ", listaCompra: " + listaCompra;
+    }
+
+    //Metodos
+    public void agregarCompra(Compra compra) {
+        this.listaCompra.add(compra);
     }
 }
 

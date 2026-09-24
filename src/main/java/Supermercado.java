@@ -280,4 +280,16 @@ public class Supermercado {
         return compra1;
     }
 
+    //Metodo ventas por fecha
+    public double ventasPorFecha(String fecha) {
+        double acumulado = 0;
+        for (Compra compra : listaCompra) {
+            if (compra.getFechaCompra().equalsIgnoreCase(fecha)) {
+                acumulado += compra.getValorTotal();
+            }
+        }
+        return acumulado;
+    }
+    //aqui se va a cambiar el equials y la fecha por el DATE
+
 }

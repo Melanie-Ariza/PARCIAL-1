@@ -65,10 +65,12 @@ public class Producto {
         this.cantidad = cantidad;
     }
 
-    public Categoria getCategoria() { return categoria;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setCategoria(Categoria categoria) { this.categoria = categoria;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     public Compra getCompra() {
@@ -96,10 +98,24 @@ public class Producto {
                 ", nombre: " + nombre +
                 ", precioUnitario: " + precioUnitario +
                 ", cantidad: " + cantidad +
-                ", categoria: " + categoria+
-                ", lista de Compra: "+ listaCompra;
+                ", categoria: " + categoria +
+                ", lista de Compra: " + listaCompra;
+
+
+    }
+
+    //Metodos
+    //validacion stock
+    public boolean hayStock(int cantidadSolicitada) {
+        return this.cantidad >= cantidadSolicitada;
+    }
+
+    //Reducir stock tras compra
+    public void reducirStock(int cantidadSolicitada) {
+        if (hayStock(cantidadSolicitada)) {
+            this.cantidad -= cantidadSolicitada;
+        }
 
 
     }
 }
-
