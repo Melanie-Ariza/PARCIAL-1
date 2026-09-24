@@ -269,7 +269,7 @@ public class Aplicacion {
                             System.out.println("Opción no valida.");
                         }
 
-                        Producto producto= new Producto(codigoProducto, nombre, precioUnitario, cantidad, categoria, compra);
+                        Producto producto= new Producto(codigoProducto, nombre, precioUnitario, cantidad, categoria);
                         if (supermercado.agregarProducto(producto)){
                             System.out.println("Producto agregado correctamente.");
                         }else {
@@ -312,7 +312,7 @@ public class Aplicacion {
                         }else{
                             System.out.println("Opción no valida.");
                         }
-                        Producto productoActualizado=new Producto(codigoProducto, nuevoNombre, nuevoPrecioUnitario, nuevaCantidad, nuevaCategoria, compra);
+                        Producto productoActualizado=new Producto(codigoProducto, nuevoNombre, nuevoPrecioUnitario, nuevaCantidad, nuevaCategoria);
                         if (supermercado.actulizarProducto(codigoProducto, productoActualizado)){
                             System.out.println("Producto actualizado correctamente.");
                         }else {
