@@ -1,17 +1,22 @@
 public class Productos {
     //Atributos
-    int codigoProducto;
-    String nombre;
-    double precioUnitario;
-    int cantidad;
+    private int codigoProducto;
+    private String nombre;
+    private double precioUnitario;
+    private int cantidad;
+
+    //Relacion Producto con Categoria
+    private Categoria categoria;
 
     //Constructor
-    public Productos(int codigoProducto, String nombre, double precioUnitario, int cantidad) {
+    public Productos(int codigoProducto, String nombre, double precioUnitario, int cantidad, Categoria categoria) {
         this.codigoProducto = codigoProducto;
         this.nombre = nombre;
         this.precioUnitario = precioUnitario;
         this.cantidad = cantidad;
+        this.categoria = categoria;
     }
+
     //Getter y setter
     public int getCodigoProducto() {
         return codigoProducto;
@@ -44,13 +49,23 @@ public class Productos {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
+
+    public Categoria getCategoria() { return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) { this.categoria = categoria;
+    }
+
     //toString
+
+
     @Override
     public String toString() {
-        return "Productos \n" +
-                "Codigo Producto:"+codigoProducto+
-                ", Nombre: "+nombre+
-                ", Precio Unitario: "+precioUnitario+
-                ", Cantidad: "+cantidad;
+        return codigoProducto +
+                ", nombre: " + nombre +
+                ", precioUnitario: " + precioUnitario +
+                ", cantidad: " + cantidad +
+                ", categoria: " + categoria;
     }
 }
+
