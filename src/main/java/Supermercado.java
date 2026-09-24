@@ -153,6 +153,23 @@ public class Supermercado {
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //Metodo para verificar compra
 
     public boolean verificarCompra (int codigoCompra) {
