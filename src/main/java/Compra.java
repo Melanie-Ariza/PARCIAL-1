@@ -1,13 +1,15 @@
+import java.time.LocalDate;
+
 public class Compra {
     //Atributos
     private int codigoCompra;
-    private int fechaCompra;
+    private LocalDate fechaCompra;
     private double valorTotal;
     private MetodoPago metodoPago;
 
     //Constructor
 
-    public Compra(int codigoCompra, int fechaCompra, double valorTotal, MetodoPago metodoPago) {
+    public Compra(int codigoCompra, LocalDate fechaCompra, double valorTotal, MetodoPago metodoPago) {
         this.codigoCompra = codigoCompra;
         this.fechaCompra = fechaCompra;
         this.valorTotal = valorTotal;
@@ -15,7 +17,6 @@ public class Compra {
     }
 
     //Getters y setters
-
 
     public MetodoPago getMetodoPago() {
         return metodoPago;
@@ -33,11 +34,11 @@ public class Compra {
         this.codigoCompra = codigoCompra;
     }
 
-    public int getFechaCompra() {
+    public LocalDate getFechaCompra() {
         return fechaCompra;
     }
 
-    public void setFechaCompra(int fechaCompra) {
+    public void setFechaCompra(LocalDate fechaCompra) {
         this.fechaCompra = fechaCompra;
     }
 
