@@ -26,6 +26,13 @@ public class Aplicacion {
                 System.out.print("Seleccione la opción.");
                 opcion= sc.nextInt();
                 sc.nextLine();
+                switch (opcion){
+                    case 1:
+
+                        break;
+                    case 2:
+
+                }
             }while (opcion!=0);
 
         
@@ -51,6 +58,8 @@ public class Aplicacion {
                 sc.nextLine();
                 switch (opcion){
                     case 1:
+                        break;
+                    case 2:
                         break;
                 }
             }
