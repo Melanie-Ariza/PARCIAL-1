@@ -3,28 +3,23 @@ public class Compra {
     private int codigoCompra;
     private int fechaCompra;
     private double valorTotal;
+
+    //Relacion Compra con MetodoPago
     private MetodoPago metodoPago;
 
     //Constructor
 
 
-    public Compra(int codigoCompra, int fechaCompra, double valorTotal) {
+    public Compra(int codigoCompra, int fechaCompra, double valorTotal, MetodoPago metodoPago) {
         this.codigoCompra = codigoCompra;
         this.fechaCompra = fechaCompra;
         this.valorTotal = valorTotal;
         this.metodoPago = metodoPago;
+
+
     }
 
     //Getters y setters
-
-
-    public MetodoPago getMetodoPago() {
-        return metodoPago;
-    }
-
-    public void setMetodoPago(MetodoPago metodoPago) {
-        this.metodoPago = metodoPago;
-    }
 
     public int getCodigoCompra() {
         return codigoCompra;
@@ -50,8 +45,15 @@ public class Compra {
         this.valorTotal = valorTotal;
     }
 
-    //toString
+    public MetodoPago getMetodoPago() {
+        return metodoPago;
+    }
 
+    public void setMetodoPago(MetodoPago metodoPago) {
+        this.metodoPago = metodoPago;
+    }
+
+    //toString
 
     @Override
     public String toString() {
