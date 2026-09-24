@@ -151,23 +151,6 @@ public class Supermercado {
         return cliente1;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //Metodo para verificar compra
 
     public boolean verificarCompra (int codigoCompra) {
@@ -211,7 +194,7 @@ public class Supermercado {
     }
 
     //Metodo para eliminar cliente
-    public boolean eliminarcliente(int documento) {
+    public boolean eliminarclient(int documento) {
         boolean esEliminado= false;
         for (Cliente cliente: listaClientes){
             if (cliente.getDocumento()==documento){
