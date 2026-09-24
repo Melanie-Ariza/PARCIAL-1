@@ -109,18 +109,47 @@ public class Supermercado {
         return agregado;
     }
     //Metodo para Actualizar
-    public boolean actulizarCliente(int documento, Cliente clienteActualizado){
+    public boolean actulizarCliente(int documento, Cliente clienteActualizado) {
         boolean estaActualizado = false;
-        for(Cliente cliente: listaClientes){
-            if(cliente.getDocumento()== documento){
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getDocumento() == documento) {
                 cliente.setNombre(clienteActualizado.getNombre());
                 cliente.setDocumento(clienteActualizado.getDocumento());
                 cliente.setTelefono(clienteActualizado.getTelefono());
                 cliente.setCorreo(clienteActualizado.getCorreo());
-                estaActualizado= true;
+                estaActualizado = true;
                 break;
             }
         }
+
         return estaActualizado;
+    }
+
+    //Metodo para eliminar cliente
+    public boolean eliminarcliente(int documento) {
+        boolean esEliminado= false;
+        for (Cliente cliente: listaClientes){
+            if (cliente.getDocumento()==documento){
+                listaClientes.remove(cliente);
+                esEliminado=true;
+            }
+        }
+        return esEliminado;
+    }
+
+    //Metodo para mostrar clientes
+    public void mostrarCliente(int eleccion, int documento){
+        if (eleccion==1){
+            List<Cliente>lista= getListaClientes();
+            System.out.println(lista);
+        } else if (eleccion==2) {
+            for (Cliente profesor: listaClientes){
+                if (profesor.getDocumento()==documento){
+                    System.out.println(profesor);
+                }
+            }
+        }else {
+            System.out.println("Opción no valida");
+        }
     }
 }

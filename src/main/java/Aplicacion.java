@@ -61,6 +61,31 @@ public class Aplicacion {
                         break;
                     case 2:
                         break;
+                    case 3:
+                        System.out.println("------- Eliminar cliente -------\n");
+
+                        System.out.println("Ingrese el documento del cliente: ");
+                        int documento= sc.nextInt();
+                        boolean eliminado= supermercado.eliminarcliente(documento);
+                        if (eliminado){
+                            System.out.println("Cliente eliminado correctamente.");
+                        }else {
+                            System.out.println("Cliente no encontrado.");
+                        }
+                        break;
+                    case 4:
+                        System.out.println("------- Mostrar cliente -------\n");
+
+                        System.out.println("1. Mostrar lista de clientes.");
+                        System.out.println("2. Mostrar cliente por documento.");
+                        int eleccion= sc.nextInt();
+
+                        if (eleccion==2){
+                            System.out.println("Ingrese el documento: ");
+                            documento = sc.nextInt();
+                        }
+                        break;
+
                 }
             }while (opcion!=0);
         }else{
