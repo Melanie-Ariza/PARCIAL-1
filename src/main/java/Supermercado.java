@@ -100,7 +100,7 @@ public class Supermercado {
     }
 
     //Metodo agregar Clientes
-    public boolean agregarEstudiantes(Cliente cliente) {
+    public boolean agregarCliente(Cliente cliente) {
         boolean agregado = false;
         boolean existe = verificarCliente(cliente.getDocumento());
         if (existe == false) {
@@ -129,7 +129,7 @@ public class Supermercado {
     }
 
     //Metodo para eliminar cliente
-    public boolean eliminarcliente(int documento) {
+    public boolean eliminarCliente(int documento) {
         boolean esEliminado = false;
         for (Cliente cliente : listaClientes) {
             if (cliente.getDocumento() == documento) {
@@ -167,6 +167,71 @@ public class Supermercado {
 
 
 
+
+    //Metodo para verificar producto
+
+    public boolean verificarProductos (int codigoProductos) {
+        boolean existe = false;
+        for (Producto producto : listaProductos) {
+            if (producto.getCodigoProducto() == codigoProductos) {
+                existe = true;
+
+            }
+        }
+        return existe;
+
+    }
+    //Metodo agregar Productos
+    public boolean agregarProducto(Producto producto) {
+        boolean agregado = false;
+        boolean existe = verificarProductos(producto.getCodigoProducto());
+        if(existe==false){
+            listaProductos.add(producto);
+            agregado= true;
+
+        }
+        return agregado;
+    }
+    //Metodo para Actualizar
+
+    public boolean actulizarProducto(int codigoProducto, Producto productoActualizado) {
+        boolean estaActualizado = false;
+        for (Compra compra : listaCompra) {
+            if (compra.getCodigoCompra() == codigoProducto) {
+                compra.setNombre(productoActualizado.getFechaCompra());
+                compra.setCodigoCompra(compraActualizada.getCodigoCompra());
+                compra.setValorTotal(compraActualizada.getValorTotal());
+                compra.setMetodoPago(compraActualizada.getMetodoPago());
+                estaActualizado = true;
+                break;
+            }
+        }
+
+        return estaActualizado;
+    }
+
+    //Metodo para eliminar compra
+    public boolean eliminarCompra(int codigoCompra) {
+        boolean esEliminado= false;
+        for (Compra compra: listaCompra){
+            if (compra.getCodigoCompra()==codigoCompra){
+                listaCompra.remove(compra);
+                esEliminado=true;
+            }
+        }
+        return esEliminado;
+    }
+
+    //Metodo para mostrar compra
+    public Compra mostrarCompra(int codigoCompra) {
+        Compra compra1=null;
+        for (Compra compra : listaCompra) {
+            if (compra.getCodigoCompra() == codigoCompra) {
+                compra1 = compra;
+            }
+        }
+        return compra1;
+    }
 
     //Metodo para verificar compra
 
