@@ -11,8 +11,6 @@ public class Productos {
     //Relacion Producto con Compra
     private Compra compra;
 
-
-
     //Relacion Producto con Categoria
     private Categoria categoria;
 
