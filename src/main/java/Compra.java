@@ -3,6 +3,7 @@ public class Compra {
     private int codigoCompra;
     private int fechaCompra;
     private double valorTotal;
+    private MetodoPago metodoPago;
 
     //Constructor
 
@@ -11,10 +12,19 @@ public class Compra {
         this.codigoCompra = codigoCompra;
         this.fechaCompra = fechaCompra;
         this.valorTotal = valorTotal;
+        this.metodoPago = metodoPago;
     }
 
     //Getters y setters
 
+
+    public MetodoPago getMetodoPago() {
+        return metodoPago;
+    }
+
+    public void setMetodoPago(MetodoPago metodoPago) {
+        this.metodoPago = metodoPago;
+    }
 
     public int getCodigoCompra() {
         return codigoCompra;
@@ -48,6 +58,7 @@ public class Compra {
         return "Compra: " + "\n"+
                 "Codigo de Compra: " + codigoCompra+
                 ", Fecha de Compra: " + fechaCompra +
-                ", Valor Total De La Venta: " + valorTotal+ "\n";
+                ", Valor Total De La Venta: " + valorTotal+
+                ", Método de Pago: " + metodoPago;
     }
 }
