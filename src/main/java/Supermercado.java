@@ -304,6 +304,15 @@ public class Supermercado {
     private ArrayList<DetalleCompra>detalles =new ArrayList<>();
     private double valorTotal = 0;
 
+    //metodo para calcular total
+
+    private void calcularTotal() {
+        this.valorTotal = 0.0;
+        for (DetalleCompra detalle : detalles) {
+            this.valorTotal += detalle.calcularSubtotal();
+        }
+    }
+
     public void comenzarCarro() {
         Scanner sc = new Scanner(System.in);
         int opcion = 1;
@@ -345,10 +354,4 @@ public class Supermercado {
         System.out.println("Valor total: " + valorTotal);
     }
 
-    private void calcularTotal() {
-        this.valorTotal = 0.0;
-        for (DetalleCompra detalle : detalles) {
-            this.valorTotal += detalle.calcularSubtotal();
-        }
-    }
 }
