@@ -11,25 +11,14 @@ public class Producto {
     //Relacion Producto con Categoria
     private Categoria categoria;
 
-    //Relacion Producto con Compra
-    private Compra compra;
-
-    //Crear Lista
-
-    private List<Compra> listaCompra;
 
     //Constructor
-    public Producto(int codigoProducto, String nombre, double precioUnitario, int cantidad, Categoria categoria, Compra compra) {
+    public Producto(int codigoProducto, String nombre, double precioUnitario, int cantidad, Categoria categoria) {
         this.codigoProducto = codigoProducto;
         this.nombre = nombre;
         this.precioUnitario = precioUnitario;
         this.cantidad = cantidad;
         this.categoria = categoria;
-        this.compra = compra;
-
-        //Inicializar lista
-        listaCompra = new ArrayList<>();
-
     }
 
     //Getter y setter
@@ -73,21 +62,6 @@ public class Producto {
         this.categoria = categoria;
     }
 
-    public Compra getCompra() {
-        return compra;
-    }
-
-    public void setCompra(Compra compra) {
-        this.compra = compra;
-    }
-
-    public List<Compra> getListaCompra() {
-        return listaCompra;
-    }
-
-    public void setListaCompra(List<Compra> listaCompra) {
-        this.listaCompra = listaCompra;
-    }
 
     //toString
 
@@ -98,8 +72,7 @@ public class Producto {
                 ", nombre: " + nombre +
                 ", precioUnitario: " + precioUnitario +
                 ", cantidad: " + cantidad +
-                ", categoria: " + categoria +
-                ", lista de Compra: " + listaCompra;
+                ", categoria: " + categoria;
 
 
     }

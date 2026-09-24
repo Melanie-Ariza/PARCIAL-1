@@ -9,6 +9,8 @@ public class Compra {
     private double valorTotal;
     private MetodoPago metodoPago;
     private Cliente cliente;
+
+    //Crear lista
     private List<DetalleCompra> detalles;
 
     //Constructor
@@ -19,7 +21,10 @@ public class Compra {
         this.valorTotal = 0.0;
         this.metodoPago = metodoPago;
         this.cliente = cliente;
+
+        //inicializo la lista
         this.detalles = new ArrayList<>();
+
     }
 
     //Getters y setters
@@ -63,11 +68,12 @@ public class Compra {
 
     @Override
     public String toString() {
-        return "Compra: " + "\n"+
-                "Codigo de Compra: " + codigoCompra+
-                ", Fecha de Compra: " + fechaCompra +
-                ", Valor Total De La Venta: " + valorTotal+
-                ", Método de Pago: " + metodoPago;
+        return codigoCompra +
+                ", fechaCompra: " + fechaCompra +
+                ", valorTotal: " + valorTotal +
+                ", cliente: " + cliente +
+                ", metodoPago: " + metodoPago +
+                ", detalles: " + detalles;
     }
 
     //Metodos

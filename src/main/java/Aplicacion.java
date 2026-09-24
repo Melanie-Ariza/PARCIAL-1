@@ -14,9 +14,9 @@ public class Aplicacion {
         supermercado.agregarCliente(cliente1);
 
         //Objetos productos
-        Producto producto_1= new Producto(111, "Arroz", 20000, 50);
-        Producto producto_2= new Producto(222, "Leche", 12000, 50);
-        Producto producto_3= new Producto(333, "Crema demtal", 5000, 50);
+        Producto producto_1= new Producto(111, "Arroz", 20000, 50, Categoria.ALIMENTOS);
+        Producto producto_2= new Producto(222, "Leche", 12000, 50, Categoria.BEBIDAS);
+        Producto producto_3= new Producto(333, "Crema demtal", 5000, 50, Categoria.CUIDADOPERSONAL);
         supermercado.agregarProducto(producto_1);
         supermercado.agregarProducto(producto_2);
         supermercado.agregarProducto(producto_3);
