@@ -15,7 +15,7 @@ public class Compra {
 
     //Constructor
 
-    public Compra(int codigoCompra, Date fechaCompra, double valorTotal, MetodoPago metodoPago) {
+    public Compra(int codigoCompra, Date fechaCompra, double valorTotal, MetodoPago metodoPago, Cliente cliente) {
         this.codigoCompra = codigoCompra;
         this.fechaCompra = fechaCompra;
         this.valorTotal = 0.0;

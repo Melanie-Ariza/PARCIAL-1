@@ -118,8 +118,10 @@ public class Aplicacion {
                         }else {
                             System.out.println("Opción no valida.");
                         }
-
-                        Compra compraActualizada= new Compra(codigoCompra, nuevaFecha, nuevoValorTotal, nuevoMetodoPago);
+                        System.out.print("Ingrese documento de cliente asociado a la compra: ");
+                        documento= sc.nextInt();
+                        Cliente clienteActualizado= supermercado.mostrarCliente(documento);
+                        Compra compraActualizada= new Compra(codigoCompra, nuevaFecha, nuevoValorTotal, nuevoMetodoPago, clienteActualizado);
 
                         if (supermercado.actulizarCompra(codigoCompra, compraActualizada)){
                             System.out.println("Compra actualizada correctamente.");
@@ -273,7 +275,11 @@ public class Aplicacion {
                         }else {
                             System.out.println("Opción no valida.");
                         }
-                        Compra compra= new Compra(codigoCompra, fechaCompra, valorTotal, metodoPago);
+
+                        System.out.print("Ingrese documento de cliente asociado a la compra: ");
+                        documento= sc.nextInt();
+                        cliente= supermercado.mostrarCliente(documento);
+                        Compra compra= new Compra(codigoCompra, fechaCompra, valorTotal, metodoPago, cliente);
                         if (supermercado.agregarCompra(compra)){
                             System.out.println("Compra agregada correctamente.");
                         }else {
@@ -313,7 +319,10 @@ public class Aplicacion {
                             System.out.println("Opción no valida.");
                         }
 
-                        Compra compraActualizada= new Compra(codigoCompra, nuevaFecha, nuevoValorTotal, nuevoMetodoPago);
+                        System.out.print("Ingrese documento de cliente asociado a la compra: ");
+                        documento= sc.nextInt();
+                        cliente= supermercado.mostrarCliente(documento);
+                        Compra compraActualizada= new Compra(codigoCompra, nuevaFecha, nuevoValorTotal, nuevoMetodoPago, cliente);
 
                         if (supermercado.actulizarCompra(codigoCompra, compraActualizada)){
                             System.out.println("Compra actualizada correctamente.");
