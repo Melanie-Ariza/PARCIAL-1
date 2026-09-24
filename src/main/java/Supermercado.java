@@ -260,8 +260,8 @@ public class Supermercado {
     //Metodo para eliminar compra
     public boolean eliminarCompra(int codigoCompra) {
         boolean esEliminado= false;
-        for (Compra compra: listaCompra) {
-            if (compra.getCodigoCompra()==codigoCompra) {
+        for (Compra compra: listaCompra){
+            if (compra.getCodigoCompra()==codigoCompra){
                 listaCompra.remove(compra);
                 esEliminado=true;
             }
@@ -270,18 +270,14 @@ public class Supermercado {
     }
 
     //Metodo para mostrar compra
-    public void mostrarCompra(int eleccion, int documento){
-        if (eleccion==1){
-            List<Cliente>lista= getListaClientes();
-            System.out.println(lista);
-        } else if (eleccion==2) {
-            for (Cliente profesor: listaClientes){
-                if (profesor.getDocumento()==documento){
-                    System.out.println(profesor);
-                }
+    public Compra mostrarCompra(int codigoCompra) {
+        Compra compra1=null;
+        for (Compra compra : listaCompra) {
+            if (compra.getCodigoCompra() == codigoCompra) {
+                compra1 = compra;
             }
-        }else {
-            System.out.println("Opción no valida");
         }
+        return compra1;
     }
+
 }
