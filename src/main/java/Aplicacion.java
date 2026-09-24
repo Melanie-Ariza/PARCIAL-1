@@ -13,19 +13,13 @@ public class Aplicacion {
         Cliente cliente1= new Cliente("Ana", 123, 1234546, "ana@gmail.com");
         supermercado.agregarCliente(cliente1);
 
-        //Objeto compra
-        Compra compra= new Compra(123, new Date(),32000, MetodoPago.EFECTIVO );
-        supermercado.agregarCompra(compra);
-
         //Objetos productos
-        Producto producto_1= new Producto(111, "Arroz", 20000, 50, Categoria.ALIMENTOS, compra);
-        Producto producto_2= new Producto(222, "Leche", 12000, 50, Categoria.ALIMENTOS, compra);
-        Producto producto_3= new Producto(333, "Crema demtal", 5000, 50, Categoria.ALIMENTOS, compra);
+        Producto producto_1= new Producto(111, "Arroz", 20000, 50);
+        Producto producto_2= new Producto(222, "Leche", 12000, 50);
+        Producto producto_3= new Producto(333, "Crema demtal", 5000, 50);
         supermercado.agregarProducto(producto_1);
         supermercado.agregarProducto(producto_2);
         supermercado.agregarProducto(producto_3);
-
-        System.out.println(compra);
         //Menu
         int opcion;
         System.out.println("======= BIENVENIDO =======");
@@ -43,7 +37,7 @@ public class Aplicacion {
                 System.out.println("2. Comenzar compra.");
                 System.out.println("3. Actualizar compra.");
                 System.out.println("6. Eliminar compra.");
-                System.out.print("Seleccione la opción.");
+                System.out.print("Seleccione la opción: ");
                 opcion= sc.nextInt();
                 sc.nextLine();
                 switch (opcion){
@@ -89,7 +83,7 @@ public class Aplicacion {
                 System.out.println("9. Actualizar productos.");
                 System.out.println("10. Eliminar productos.");
                 System.out.println("11. Mostrar productos.");
-                System.out.print("Seleccione la opción.");
+                System.out.print("Seleccione la opción: ");
                 opcion= sc.nextInt();
                 sc.nextLine();
                 switch (opcion){
@@ -139,7 +133,7 @@ public class Aplicacion {
                     case 3:
                         System.out.println("------- Eliminar cliente -------\n");
 
-                        System.out.println("Ingrese el documento del cliente: ");
+                        System.out.print("Ingrese el documento del cliente: ");
                         documento= sc.nextInt();
                         boolean eliminado= supermercado.eliminarCliente(documento);
                         if (eliminado){
@@ -161,7 +155,8 @@ public class Aplicacion {
                         } else if (eleccion==2) {
                             System.out.print("Ingrese el documento del cliente: ");
                             documento= sc.nextInt();
-                            Cliente cliente2=supermercado.mostrarCliente(documento);
+                            Cliente mostrarCliente=supermercado.mostrarCliente(documento);
+                            System.out.println(mostrarCliente);
                         }else {
                             System.out.println("Opción no valida.");
                         }
@@ -175,14 +170,14 @@ public class Aplicacion {
 
                         System.out.print("Nuevo fecha de compra: ");
                         String fechaTexto= sc.nextLine();
-                        SimpleDateFormat formato= new SimpleDateFormat("DD/MM/AAAA");
+                        SimpleDateFormat formato= new SimpleDateFormat("DD/MM/YYYY");
                         Date nuevaFecha= formato.parse(fechaTexto);
 
                         System.out.print("Nuevo valor total: ");
                         double nuevoValorTotal= sc.nextDouble();
                         sc.nextLine();
 
-                        System.out.print("Nuevo metodo de pago: \n"+
+                        System.out.println("Nuevo metodo de pago: \n"+
                                 "1. Tarjeta"+
                                 "  2. Transferencia"+
                                 "  3. Efectivo");
@@ -210,7 +205,7 @@ public class Aplicacion {
                     case 6:
                         System.out.println("------- Eliminar compra -------\n");
 
-                        System.out.println("Ingrese el codigo de compra: ");
+                        System.out.print("Ingrese el codigo de compra: ");
                         codigoCompra= sc.nextInt();
                         eliminado= supermercado.eliminarCompra(codigoCompra);
                         if (eliminado){
@@ -232,7 +227,8 @@ public class Aplicacion {
                         } else if (eleccion==2) {
                             System.out.print("Ingrese el codigo de compra: ");
                             documento= sc.nextInt();
-                            Compra cliente2=supermercado.mostrarCompra(documento);
+                            Compra mostrarCompra=supermercado.mostrarCompra(documento);
+                            System.out.println(mostrarCompra);
                         }else {
                             System.out.println("Opción no valida.");
                         }
@@ -326,7 +322,7 @@ public class Aplicacion {
                     case 10:
                         System.out.println("------- Eliminar producto -------\n");
 
-                        System.out.println("Ingrese el codigo de producto: ");
+                        System.out.print("Ingrese el codigo de producto: ");
                         codigoProducto= sc.nextInt();
                         eliminado= supermercado.eliminarProducto(codigoProducto);
                         if (eliminado){
@@ -348,7 +344,8 @@ public class Aplicacion {
                         } else if (eleccion==2) {
                             System.out.print("Ingrese el codigo del producto: ");
                             codigoProducto= sc.nextInt();
-                            Producto producto1=supermercado.mostrarProducto(codigoProducto);
+                            Producto mostrarProducto=supermercado.mostrarProducto(codigoProducto);
+                            System.out.println(mostrarProducto);
                         }else {
                             System.out.println("Opción no valida.");
                         }

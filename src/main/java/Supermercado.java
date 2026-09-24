@@ -86,7 +86,7 @@ public class Supermercado {
                 ", Lista de Compras: " + listaCompras +
                 ", Lista de Productos: " + listaProductos;
     }
-
+// ===================== CLIENTE ========================
     //Metodo para verificar Clientes
     public boolean verificarCliente(int documento) {
         boolean existe = false;
@@ -99,7 +99,6 @@ public class Supermercado {
         return existe;
 
     }
-
     //Metodo agregar Clientes
     public boolean agregarCliente(Cliente cliente) {
         boolean agregado = false;
@@ -135,6 +134,7 @@ public class Supermercado {
             if (cliente.getDocumento() == documento) {
                 listaClientes.remove(cliente);
                 esEliminado = true;
+                break;
             }
         }
         return esEliminado;
@@ -151,7 +151,7 @@ public class Supermercado {
         return cliente1;
     }
 
-
+// ================ PRODUCTO ======================
 
     //Metodo para verificar producto
 
@@ -201,6 +201,7 @@ public class Supermercado {
             if (producto.getCodigoProducto()==codigoProducto) {
                 listaProductos.remove(producto);
                 esEliminado=true;
+                break;
             }
         }
         return esEliminado;
@@ -216,6 +217,8 @@ public class Supermercado {
         }
         return producto1;
     }
+
+// ========================== COMPRA ======================
 
     //Metodo para verificar compra
 
@@ -234,10 +237,9 @@ public class Supermercado {
     public boolean agregarCompra(Compra compra) {
         boolean agregado = false;
         boolean existe = verificarCliente(compra.getCodigoCompra());
-        if(existe==false){
+        if(existe){
             listaCompras.add(compra);
             agregado= true;
-
         }
         return agregado;
     }
@@ -265,6 +267,7 @@ public class Supermercado {
             if (compra.getCodigoCompra()==codigoCompra){
                 listaCompras.remove(compra);
                 esEliminado=true;
+                break;
             }
         }
         return esEliminado;
