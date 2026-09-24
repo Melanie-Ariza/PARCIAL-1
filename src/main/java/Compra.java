@@ -78,13 +78,14 @@ public class Compra {
 
     //Metodos
     public boolean agregarProducto(Producto producto, int cantidad) {
+        boolean agregado = false;
         if (producto.hayStock(cantidad)) {
             detalles.add(new DetalleCompra(producto, cantidad));
             producto.reducirStock(cantidad);
             calcularTotal();
-            return true;
+            agregado = true;
         }
-        return false;
+        return agregado;
     }
 
     private void calcularTotal() {
