@@ -42,7 +42,8 @@ public class Compra {
     }
 
     public Date getFechaCompra() {
-        return fechaCompra;
+
+        return this.fechaCompra;
     }
 
     public void setFechaCompra(Date fechaCompra) {

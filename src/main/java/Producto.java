@@ -8,11 +8,11 @@ public class Producto {
     private double precioUnitario;
     private int cantidad;
 
-    //Relacion Producto con Compra
-    private Compra compra;
-
     //Relacion Producto con Categoria
     private Categoria categoria;
+
+    //Relacion Producto con Compra
+    private Compra compra;
 
     //Crear Lista
 

@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -9,14 +10,19 @@ public class Aplicacion {
 
         //Objeto clientes
         Cliente cliente1= new Cliente("Ana", 123, 1234546, "ana@gmail.com");
+        supermercado.agregarCliente(cliente1);
 
         //Objeto compra
         Compra compra= new Compra(123, new Date(),32000, MetodoPago.EFECTIVO );
+        supermercado.agregarCompra(compra);
 
         //Objetos productos
         Producto producto_1= new Producto(111, "Arroz", 20000, 50, Categoria.ALIMENTOS, compra);
         Producto producto_2= new Producto(222, "Leche", 12000, 50, Categoria.ALIMENTOS, compra);
         Producto producto_3= new Producto(333, "Crema demtal", 5000, 50, Categoria.ALIMENTOS, compra);
+        supermercado.agregarProducto(producto_1);
+        supermercado.agregarProducto(producto_2);
+        supermercado.agregarProducto(producto_3);
 
         System.out.println(compra);
         //Menu
@@ -41,7 +47,23 @@ public class Aplicacion {
                 sc.nextLine();
                 switch (opcion){
                     case 1:
+                        System.out.println("------- Agregar cliente -------\n");
 
+                        System.out.print("Nombre: ");
+                        String nombre= sc.nextLine();
+                        System.out.print("Documento: ");
+                        int documento= sc.nextInt();
+                        System.out.print("Telefono: ");
+                        int telefono= sc.nextInt();
+                        sc.nextLine();
+                        System.out.print("Correo: ");
+                        String correo= sc.nextLine();
+                        Cliente cliente= new Cliente(nombre, documento, telefono, correo);
+                        if (supermercado.agregarCliente(cliente)){
+                            System.out.println("Cliente agregado correctamente.");
+                        }else {
+                            System.out.println("Cliente ya existente.");
+                        }
                         break;
                     case 2:
 
@@ -92,7 +114,7 @@ public class Aplicacion {
                     case 2:
                         System.out.println("------- Actualizar cliente -------\n");
 
-                        System.out.print("Documento de profesor a actualizar: ");
+                        System.out.print("Documento de cliente a actualizar: ");
                         documento= sc.nextInt();
                         sc.nextLine();
 
@@ -143,7 +165,175 @@ public class Aplicacion {
                             System.out.println("Opción no valida.");
                         }
                         break;
+                    case 5:
+                        System.out.println("------- Actualizar compra -------\n");
 
+                        System.out.print("Codigo de compra a actualizar: ");
+                        int codigoCompra= sc.nextInt();
+                        sc.nextLine();
+
+                        System.out.print("Nuevo fecha de compra: ");
+                        String fechaTexto= sc.nextLine();
+                        SimpleDateFormat formato= new SimpleDateFormat("DD/MM/AAAA");
+                        Date nuevaFecha= formato.parse(fechaTexto);
+
+                        System.out.print("Nuevo valor total: ");
+                        double nuevoValorTotal= sc.nextDouble();
+                        sc.nextLine();
+
+                        System.out.print("Nuevo metodo de pago: \n"+
+                                "1. Tarjeta"+
+                                "  2. Transferencia"+
+                                "  3. Efectivo");
+                        int metodo= sc.nextInt();
+
+                        MetodoPago nuevoMetodoPago = null;
+                        if (metodo==1){
+                            nuevoMetodoPago= MetodoPago.TARJETA;
+                        } else if (metodo==2) {
+                            nuevoMetodoPago=MetodoPago.TRANSFERENCIA;
+                        } else if (metodo==3) {
+                            nuevoMetodoPago= MetodoPago.EFECTIVO;
+                        }else {
+                            System.out.println("Opción no valida.");
+                        }
+
+                        Compra compraActualizada= new Compra(codigoCompra, nuevaFecha, nuevoValorTotal, nuevoMetodoPago);
+
+                        if (supermercado.actulizarCompra(codigoCompra, compraActualizada)){
+                            System.out.println("Compra actualizada correctamente.");
+                        } else {
+                            System.out.println("Compra no encontrada.");
+                        }
+                        break;
+                    case 6:
+                        System.out.println("------- Eliminar compra -------\n");
+
+                        System.out.println("Ingrese el codigo de compra: ");
+                        codigoCompra= sc.nextInt();
+                        eliminado= supermercado.eliminarCompra(codigoCompra);
+                        if (eliminado){
+                            System.out.println("Compra eliminada correctamente.");
+                        }else {
+                            System.out.println("Compra no encontrada.");
+                        }
+                        break;
+                    case 7:
+                        System.out.println("------- Mostrar compra -------\n");
+
+                        System.out.println("1. Mostrar lista de compras.");
+                        System.out.println("2. Mostrar compra por codigo de compra.");
+                        eleccion= sc.nextInt();
+                        if (eleccion== 1){
+                            for(Compra compra2: supermercado.getListaCompras()){
+                                System.out.println(compra2);
+                            }
+                        } else if (eleccion==2) {
+                            System.out.print("Ingrese el codigo de compra: ");
+                            documento= sc.nextInt();
+                            Compra cliente2=supermercado.mostrarCompra(documento);
+                        }else {
+                            System.out.println("Opción no valida.");
+                        }
+                        break;
+                    case 8:
+                        System.out.println("------- Agregar Producto -------\n");
+
+                        System.out.print("Codigo: ");
+                        int codigoProducto= sc.nextInt();
+                        sc.nextLine();
+
+                        System.out.print("Nombre: ");
+                        nombre= sc.nextLine();
+
+                        System.out.print("Precio unitario: ");
+                        double precioUnitario= sc.nextDouble();
+                        sc.nextLine();
+
+                        System.out.print("Cantidad: ");
+                        int cantidad= sc.nextInt();
+                        System.out.print("Categoría \n"+
+                                "1. Alimentos"+
+                                "2. Bebidas"+
+                                "3. Productos de aseo"+
+                                "4. Cuidado personal");
+                        System.out.print("Seleccione una categoria: ");
+                        int numeroCategoria= sc.nextInt();
+                        Categoria categoria = null;
+                        if (numeroCategoria==1){
+                            categoria= Categoria.ALIMENTOS;
+                        } else if (numeroCategoria==2) {
+                            categoria=Categoria.BEBIDAS;
+                        } else if (numeroCategoria==3) {
+                            categoria= Categoria.PRODUCTOSDEASEO;
+                        }else if (numeroCategoria==4) {
+                            categoria = Categoria.CUIDADOPERSONAL;
+                        }else {
+                            System.out.println("Opción no valida.");                    }
+
+                        Producto producto= new Producto(codigoProducto, nombre, precioUnitario, cantidad, categoria, compra);
+                        if (supermercado.agregarCliente(cliente)){
+                            System.out.println("Cliente agregado correctamente.");
+                        }else {
+                            System.out.println("Cliente ya existente.");
+                        }
+                        break;
+                    case 9:
+                        System.out.println("------- Actualizar cliente -------\n");
+
+                        System.out.print("Documento de cliente a actualizar: ");
+                        documento= sc.nextInt();
+                        sc.nextLine();
+
+                        System.out.print("Nuevo nombre: ");
+                        String nuevoNombre= sc.nextLine();
+
+                        System.out.print("Nuevo telefono: ");
+                        int nuevoTelefono= sc.nextInt();
+                        sc.nextLine();
+
+                        System.out.print("Nuevo correo: ");
+                        String nuevoCorreo= sc.nextLine();
+
+                        Cliente clienteActualizado=new Cliente(nuevoNombre, documento, nuevoTelefono, nuevoCorreo);
+                        if (supermercado.actulizarCliente(documento, clienteActualizado)){
+                            System.out.println("Cliente actualizado correctamente.");
+                        }else {
+                            System.out.println("Cliente no encontrado.");
+                        }
+                        break;
+                    case 10:
+                        System.out.println("------- Eliminar cliente -------\n");
+
+                        System.out.println("Ingrese el documento del cliente: ");
+                        documento= sc.nextInt();
+                        boolean eliminado= supermercado.eliminarCliente(documento);
+                        if (eliminado){
+                            System.out.println("Cliente eliminado correctamente.");
+                        }else {
+                            System.out.println("Cliente no encontrado.");
+                        }
+                        break;
+                    case 11:
+                        System.out.println("------- Mostrar cliente -------\n");
+
+                        System.out.println("1. Mostrar lista de clientes.");
+                        System.out.println("2. Mostrar cliente por documento.");
+                        int eleccion= sc.nextInt();
+                        if (eleccion== 1){
+                            for(Cliente cliente2: supermercado.getListaClientes()){
+                                System.out.println(cliente2);
+                            }
+                        } else if (eleccion==2) {
+                            System.out.print("Ingrese el documento del cliente: ");
+                            documento= sc.nextInt();
+                            Cliente cliente2=supermercado.mostrarCliente(documento);
+                        }else {
+                            System.out.println("Opción no valida.");
+                        }
+                        break;
+
+                    default:
                 }
             }while (opcion!=0);
         }else{

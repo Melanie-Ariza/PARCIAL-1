@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Supermercado {
@@ -10,7 +11,7 @@ public class Supermercado {
     //Creacion listas
 
     private List<Cliente> listaClientes;
-    private List<Compra> listaCompra;
+    private List<Compra> listaCompras;
     private List<Producto> listaProductos;
 
     //Constructor
@@ -22,7 +23,7 @@ public class Supermercado {
         //Inicializar listas
         listaClientes = new ArrayList<>();
         listaProductos = new ArrayList<>();
-        listaCompra = new ArrayList<>();
+        listaCompras = new ArrayList<>();
     }
     //Getter y setter
 
@@ -58,12 +59,12 @@ public class Supermercado {
         this.listaClientes = listaClientes;
     }
 
-    public List<Compra> getListaCompra() {
-        return listaCompra;
+    public List<Compra> getListaCompras() {
+        return listaCompras;
     }
 
-    public void setListaCompra(List<Compra> listaCompra) {
-        this.listaCompra = listaCompra;
+    public void setListaCompras(List<Compra> listaCompras) {
+        this.listaCompras = listaCompras;
     }
 
     public List<Producto> getListaProductos() {
@@ -82,7 +83,7 @@ public class Supermercado {
                 ", Dirección: " + direccion +
                 ", Telefono: " + telefono +
                 ", Lista de Clientes: " + listaClientes +
-                ", Lista de Compras: " + listaCompra +
+                ", Lista de Compras: " + listaCompras +
                 ", Lista de Productos: " + listaProductos;
     }
 
@@ -220,7 +221,7 @@ public class Supermercado {
 
     public boolean verificarCompra (int codigoCompra) {
         boolean existe = false;
-        for (Compra compra : listaCompra) {
+        for (Compra compra : listaCompras) {
             if (compra.getCodigoCompra() == codigoCompra) {
                 existe = true;
 
@@ -234,7 +235,7 @@ public class Supermercado {
         boolean agregado = false;
         boolean existe = verificarCliente(compra.getCodigoCompra());
         if(existe==false){
-            listaCompra.add(compra);
+            listaCompras.add(compra);
             agregado= true;
 
         }
@@ -244,7 +245,7 @@ public class Supermercado {
 
     public boolean actulizarCompra(int codigoCompra, Compra compraActualizada) {
         boolean estaActualizado = false;
-        for (Compra compra : listaCompra) {
+        for (Compra compra : listaCompras) {
             if (compra.getCodigoCompra() == codigoCompra) {
                 compra.setFechaCompra(compraActualizada.getFechaCompra());
                 compra.setValorTotal(compraActualizada.getValorTotal());
@@ -260,9 +261,9 @@ public class Supermercado {
     //Metodo para eliminar compra
     public boolean eliminarCompra(int codigoCompra) {
         boolean esEliminado= false;
-        for (Compra compra: listaCompra){
+        for (Compra compra: listaCompras){
             if (compra.getCodigoCompra()==codigoCompra){
-                listaCompra.remove(compra);
+                listaCompras.remove(compra);
                 esEliminado=true;
             }
         }
@@ -272,7 +273,7 @@ public class Supermercado {
     //Metodo para mostrar compra
     public Compra mostrarCompra(int codigoCompra) {
         Compra compra1=null;
-        for (Compra compra : listaCompra) {
+        for (Compra compra : listaCompras) {
             if (compra.getCodigoCompra() == codigoCompra) {
                 compra1 = compra;
             }
@@ -281,10 +282,10 @@ public class Supermercado {
     }
 
     //Metodo ventas por fecha
-    public double ventasPorFecha(String fecha) {
+    public double ventasPorFecha(Date fechaCompra) {
         double acumulado = 0;
-        for (Compra compra : listaCompra) {
-            if (compra.getFechaCompra().equalsIgnoreCase(fecha)) {
+        for (Compra compra : listaCompras) {
+            if (compra.getFechaCompra()==fechaCompra) {
                 acumulado += compra.getValorTotal();
             }
         }
