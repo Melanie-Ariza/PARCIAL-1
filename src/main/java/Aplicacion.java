@@ -14,12 +14,34 @@ public class Aplicacion {
         supermercado.agregarCliente(cliente1);
 
         //Objetos productos
-        Producto producto_1= new Producto(111, "Arroz", 20000, 50, Categoria.ALIMENTOS);
-        Producto producto_2= new Producto(222, "Leche", 12000, 50, Categoria.BEBIDAS);
-        Producto producto_3= new Producto(333, "Crema dental", 5000, 50, Categoria.CUIDADOPERSONAL);
+        Producto producto_1= new Producto(111, "Arroz", 3200, 50, Categoria.ALIMENTOS);
+        Producto producto_2= new Producto(112, "Papa", 2000, 50, Categoria.ALIMENTOS);
+        Producto producto_3= new Producto(113, "Harina", 8000, 50, Categoria.ALIMENTOS);
+
+        Producto producto_4= new Producto(221, "Monster", 12500, 50, Categoria.BEBIDAS);
+        Producto producto_5= new Producto(222, "Coca-Cola", 7000, 50, Categoria.BEBIDAS);
+        Producto producto_6= new Producto(223, "Sprite", 6000, 50, Categoria.BEBIDAS);
+
+        Producto producto_7= new Producto(331, "Detergente", 10000, 50, Categoria.PRODUCTOSDEASEO);
+        Producto producto_8= new Producto(332, "Escoba", 15000, 50, Categoria.PRODUCTOSDEASEO);
+        Producto producto_9= new Producto(333, "Trapero", 18500, 50, Categoria.PRODUCTOSDEASEO);
+
+        Producto producto_10= new Producto(441, "Crema dental", 5000, 50, Categoria.CUIDADOPERSONAL);
+        Producto producto_11= new Producto(442, "Protector solar", 50000, 50, Categoria.CUIDADOPERSONAL);
+        Producto producto_12= new Producto(443, "Jabon", 7500, 50, Categoria.CUIDADOPERSONAL);
         supermercado.agregarProducto(producto_1);
         supermercado.agregarProducto(producto_2);
         supermercado.agregarProducto(producto_3);
+        supermercado.agregarProducto(producto_4);
+        supermercado.agregarProducto(producto_5);
+        supermercado.agregarProducto(producto_6);
+        supermercado.agregarProducto(producto_7);
+        supermercado.agregarProducto(producto_8);
+        supermercado.agregarProducto(producto_9);
+        supermercado.agregarProducto(producto_10);
+        supermercado.agregarProducto(producto_11);
+        supermercado.agregarProducto(producto_12);
+
         //Menu
         int opcion;
         System.out.println("======= BIENVENIDO =======");
@@ -162,15 +184,53 @@ public class Aplicacion {
                         }
                         break;
                     case 5:
+                        System.out.println("------- Agregar compra -------\n");
+
+                        System.out.print("Codigo compra: ");
+                        int codigoCompra= sc.nextInt();
+
+                        System.out.print("Fecha Compra: ");
+                        String fechaTexto= sc.nextLine();
+                        SimpleDateFormat formato= new SimpleDateFormat("dd/MM/yyyy");
+                        Date fechaCompra= formato.parse(fechaTexto);
+
+                        System.out.print("Valor total: ");
+                        double valorTotal= sc.nextInt();
+                        sc.nextLine();
+
+                        System.out.print("Metodo de pago: "+
+                                "1. Tarjeta"+
+                                "  2. Transferencia"+
+                                "  3. Efectivo");
+                        int metodo= sc.nextInt();
+
+                        MetodoPago metodoPago = null;
+                        if (metodo==1){
+                            metodoPago= MetodoPago.TARJETA;
+                        } else if (metodo==2) {
+                            metodoPago=MetodoPago.TRANSFERENCIA;
+                        } else if (metodo==3) {
+                            metodoPago= MetodoPago.EFECTIVO;
+                        }else {
+                            System.out.println("Opción no valida.");
+                        }
+                        Compra compra= new Compra(codigoCompra, fechaCompra, valorTotal, metodoPago);
+                        if (supermercado.agregarCompra(compra)){
+                            System.out.println("Compra agregada correctamente.");
+                        }else {
+                            System.out.println("Compra ya existente.");
+                        }
+                        break;
+                    case 6:
                         System.out.println("------- Actualizar compra -------\n");
 
                         System.out.print("Codigo de compra a actualizar: ");
-                        int codigoCompra= sc.nextInt();
+                        codigoCompra= sc.nextInt();
                         sc.nextLine();
 
                         System.out.print("Nuevo fecha de compra: ");
-                        String fechaTexto= sc.nextLine();
-                        SimpleDateFormat formato= new SimpleDateFormat("DD/MM/YYYY");
+                        fechaTexto= sc.nextLine();
+                        formato= new SimpleDateFormat("dd/MM/yyyy");
                         Date nuevaFecha= formato.parse(fechaTexto);
 
                         System.out.print("Nuevo valor total: ");
@@ -181,7 +241,7 @@ public class Aplicacion {
                                 "1. Tarjeta"+
                                 "  2. Transferencia"+
                                 "  3. Efectivo");
-                        int metodo= sc.nextInt();
+                        metodo= sc.nextInt();
 
                         MetodoPago nuevoMetodoPago = null;
                         if (metodo==1){
@@ -202,7 +262,7 @@ public class Aplicacion {
                             System.out.println("Compra no encontrada.");
                         }
                         break;
-                    case 6:
+                    case 7:
                         System.out.println("------- Eliminar compra -------\n");
 
                         System.out.print("Ingrese el codigo de compra: ");
@@ -214,7 +274,7 @@ public class Aplicacion {
                             System.out.println("Compra no encontrada.");
                         }
                         break;
-                    case 7:
+                    case 8:
                         System.out.println("------- Mostrar compra -------\n");
 
                         System.out.println("1. Mostrar lista de compras.");
@@ -233,7 +293,7 @@ public class Aplicacion {
                             System.out.println("Opción no valida.");
                         }
                         break;
-                    case 8:
+                    case 9:
                         System.out.println("------- Agregar Producto -------\n");
 
                         System.out.print("Codigo: ");
@@ -276,7 +336,7 @@ public class Aplicacion {
                             System.out.println("Producto ya existente.");
                         }
                         break;
-                    case 9:
+                    case 10:
                         System.out.println("------- Actualizar producto -------\n");
 
                         System.out.print("Codigo producto a actualizar: ");
@@ -319,7 +379,7 @@ public class Aplicacion {
                             System.out.println("Producto no encontrado.");
                         }
                         break;
-                    case 10:
+                    case 11:
                         System.out.println("------- Eliminar producto -------\n");
 
                         System.out.print("Ingrese el codigo de producto: ");
@@ -331,7 +391,7 @@ public class Aplicacion {
                             System.out.println("Producto no encontrado.");
                         }
                         break;
-                    case 11:
+                    case 12:
                         System.out.println("------- Mostrar producto -------\n");
 
                         System.out.println("1. Mostrar lista de productos.");
