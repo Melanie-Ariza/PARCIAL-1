@@ -78,15 +78,16 @@ public class Supermercado {
     @Override
     public String toString() {
         return "Supermercado \n" +
-                "Nombre:"+nombre+
-                ", Dirección: "+direccion+
-                ", Telefono: "+telefono+
-                ", Lista de Clientes: "+listaClientes+
-                ", Lista de Compras: "+listaCompra+
-                ", Lista de Productos: "+listaProductos;
+                "Nombre:" + nombre +
+                ", Dirección: " + direccion +
+                ", Telefono: " + telefono +
+                ", Lista de Clientes: " + listaClientes +
+                ", Lista de Compras: " + listaCompra +
+                ", Lista de Productos: " + listaProductos;
     }
+
     //Metodo para verificar Clientes
-    public boolean verificarCliente (int documento) {
+    public boolean verificarCliente(int documento) {
         boolean existe = false;
         for (Cliente cliente : listaClientes) {
             if (cliente.getDocumento() == documento) {
@@ -97,17 +98,19 @@ public class Supermercado {
         return existe;
 
     }
+
     //Metodo agregar Clientes
-    public boolean agregarEstudiantes(Cliente cliente){
+    public boolean agregarEstudiantes(Cliente cliente) {
         boolean agregado = false;
         boolean existe = verificarCliente(cliente.getDocumento());
-        if(existe==false){
+        if (existe == false) {
             listaClientes.add(cliente);
-            agregado= true;
+            agregado = true;
 
         }
         return agregado;
     }
+
     //Metodo para Actualizar
     public boolean actulizarCliente(int documento, Cliente clienteActualizado) {
         boolean estaActualizado = false;
@@ -127,29 +130,24 @@ public class Supermercado {
 
     //Metodo para eliminar cliente
     public boolean eliminarcliente(int documento) {
-        boolean esEliminado= false;
-        for (Cliente cliente: listaClientes){
-            if (cliente.getDocumento()==documento){
+        boolean esEliminado = false;
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getDocumento() == documento) {
                 listaClientes.remove(cliente);
-                esEliminado=true;
+                esEliminado = true;
             }
         }
         return esEliminado;
     }
 
-    //Metodo para mostrar clientes
-    public void mostrarCliente(int eleccion, int documento){
-        if (eleccion==1){
-            List<Cliente>lista= getListaClientes();
-            System.out.println(lista);
-        } else if (eleccion==2) {
-            for (Cliente profesor: listaClientes){
-                if (profesor.getDocumento()==documento){
-                    System.out.println(profesor);
-                }
+    //Metodo para mostrar clientes por documento
+    public Cliente mostrarCliente(int documento) {
+        Cliente cliente1=null;
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getDocumento() == documento) {
+                cliente1 = cliente;
             }
-        }else {
-            System.out.println("Opción no valida");
         }
+        return cliente1;
     }
 }
