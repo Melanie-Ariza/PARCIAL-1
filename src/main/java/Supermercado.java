@@ -362,7 +362,7 @@ public class Supermercado {
         calcularTotal();
         System.out.println("Valor total: " + valorTotal);
 
-        System.out.print("Nuevo metodo de pago: \n"+
+        System.out.println("Nuevo metodo de pago: \n"+
                 "1. Tarjeta"+
                 "  2. Transferencia"+
                 "  3. Efectivo");
@@ -381,14 +381,14 @@ public class Supermercado {
 
 
         int codigoCompra = generarCodigo();
-        String fechaTexto= LocalDate.now().toString();
+
+        System.out.print("Nuevo fecha de compra: ");
+        String fechaTexto= sc.nextLine();
         SimpleDateFormat formato= new SimpleDateFormat("dd/MM/yyyy");
         Date fechaCompra= formato.parse(fechaTexto);
 
 
         Compra nuevaCompra = new Compra(codigoCompra, fechaCompra, valorTotal , metodoPago, cliente);
-
-        // 4. Se la vinculamos al cliente
         cliente.agregarCompra(nuevaCompra);
 
     }
