@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 public class Supermercado {
     //Atributos
@@ -236,13 +237,14 @@ public class Supermercado {
     //Metodo agregar Compra
     public boolean agregarCompra(Compra compra) {
         boolean agregado = false;
-        boolean existe = verificarCliente(compra.getCodigoCompra());
+        boolean existe = verificarCompra(compra.getCodigoCompra());
         if(existe){
             listaCompras.add(compra);
             agregado= true;
         }
         return agregado;
     }
+
     //Metodo para Actualizar
 
     public boolean actulizarCompra(int codigoCompra, Compra compraActualizada) {
@@ -294,6 +296,39 @@ public class Supermercado {
         }
         return acumulado;
     }
-    //aqui se va a cambiar el equials y la fecha por el DATE
+
+    //Metodo comenzar carrito
+    public void comenzarCarro(){
+        Scanner sc= new Scanner(System.in);
+        double valorTotal=0;
+        int opcion=1;
+        do {
+            for (Producto producto:listaProductos){
+                System.out.println(producto);
+            }
+
+            System.out.print("Ingrese el código del producto que desea: ");
+            int codigoProducto= sc.nextInt();
+            for (Producto producto:listaProductos){
+                if (producto.getCodigoProducto()==codigoProducto){
+
+                    System.out.print("¿Qué cantidad desea?: ");
+                    int cantidadDeseada= sc.nextInt();
+                    if (cantidadDeseada <= producto.getCantidad()){
+                        //Sumar al valor total
+                        //Restar del stock
+                        System.out.println("Hecho.");
+                    }else {
+                        System.out.println("No hay suficiente stock disponible.");
+                    }
+                    break;
+                }
+
+            }
+            System.out.println("¿Desea continuar comprando? (1: Sí / 2: No)");
+            opcion= sc.nextInt();
+        }while (opcion!=2);
+        System.out.println("Valor total: "+valorTotal);
+    }
 
 }
