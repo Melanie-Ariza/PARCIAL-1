@@ -8,9 +8,6 @@ public class Producto {
     private double precioUnitario;
     private int cantidad;
 
-    //Relacion Producto con Categoria
-    private Categoria categoria;
-
 
     //Constructor
     public Producto(int codigoProducto, String nombre, double precioUnitario, int cantidad, Categoria categoria) {
@@ -18,7 +15,6 @@ public class Producto {
         this.nombre = nombre;
         this.precioUnitario = precioUnitario;
         this.cantidad = cantidad;
-        this.categoria = categoria;
     }
 
     //Getter y setter
@@ -54,13 +50,6 @@ public class Producto {
         this.cantidad = cantidad;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
 
 
     //toString
@@ -71,8 +60,7 @@ public class Producto {
         return codigoProducto +
                 ", nombre: " + nombre +
                 ", precioUnitario: " + precioUnitario +
-                ", cantidad: " + cantidad +
-                ", categoria: " + categoria;
+                ", cantidad: " + cantidad;
 
 
     }
