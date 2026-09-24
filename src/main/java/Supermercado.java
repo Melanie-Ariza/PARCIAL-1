@@ -194,14 +194,14 @@ public class Supermercado {
     }
     //Metodo para Actualizar
 
-    public boolean actulizarCompra(int codigoCompra, Cliente compraActualizada) {
+    public boolean actulizarCompra(int codigoCompra, Compra compraActualizada) {
         boolean estaActualizado = false;
         for (Compra compra : listaCompra) {
             if (compra.getCodigoCompra() == codigoCompra) {
-                compra.setFechaCompra(compraActualizada.getCompra().getFechaCompra());
-                compra.setCodigoCompra(compraActualizada.getCompra().getCodigoCompra());
-                compra.setValorTotal(compraActualizada.getTelefono());
-                compra.setMetodoPago(compraActualizada.getCorreo());
+                compra.setFechaCompra(compraActualizada.getFechaCompra());
+                compra.setCodigoCompra(compraActualizada.getCodigoCompra());
+                compra.setValorTotal(compraActualizada.getValorTotal());
+                compra.setMetodoPago(compraActualizada.getMetodoPago());
                 estaActualizado = true;
                 break;
             }
