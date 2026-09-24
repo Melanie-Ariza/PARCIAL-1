@@ -3,8 +3,6 @@ public class Compra {
     private int codigoCompra;
     private int fechaCompra;
     private double valorTotal;
-
-    //Relacion compra con metodoPago
     private MetodoPago metodoPago;
 
     //Constructor
