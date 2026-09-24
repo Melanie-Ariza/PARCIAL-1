@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Productos {
     //Atributos
     private int codigoProducto;
@@ -5,16 +8,30 @@ public class Productos {
     private double precioUnitario;
     private int cantidad;
 
+    //Relacion Producto con Compra
+    private Compra compra;
+
+
+
     //Relacion Producto con Categoria
     private Categoria categoria;
 
+    //Crear Lista
+
+    private List<Compra> listaCompra;
+
     //Constructor
-    public Productos(int codigoProducto, String nombre, double precioUnitario, int cantidad, Categoria categoria) {
+    public Productos(int codigoProducto, String nombre, double precioUnitario, int cantidad, Categoria categoria, Compra compra) {
         this.codigoProducto = codigoProducto;
         this.nombre = nombre;
         this.precioUnitario = precioUnitario;
         this.cantidad = cantidad;
         this.categoria = categoria;
+        this.compra = compra;
+
+        //Inicializar lista
+        listaCompra = new ArrayList<>();
+
     }
 
     //Getter y setter
@@ -56,6 +73,22 @@ public class Productos {
     public void setCategoria(Categoria categoria) { this.categoria = categoria;
     }
 
+    public Compra getCompra() {
+        return compra;
+    }
+
+    public void setCompra(Compra compra) {
+        this.compra = compra;
+    }
+
+    public List<Compra> getListaCompra() {
+        return listaCompra;
+    }
+
+    public void setListaCompra(List<Compra> listaCompra) {
+        this.listaCompra = listaCompra;
+    }
+
     //toString
 
 
@@ -65,7 +98,10 @@ public class Productos {
                 ", nombre: " + nombre +
                 ", precioUnitario: " + precioUnitario +
                 ", cantidad: " + cantidad +
-                ", categoria: " + categoria;
+                ", categoria: " + categoria+
+                ", lista de Compra: "+ listaCompra;
+
+
     }
 }
 
