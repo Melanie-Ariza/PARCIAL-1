@@ -1,13 +1,15 @@
+import java.util.Date;
+
 public class Compra {
     //Atributos
     private int codigoCompra;
-    private int fechaCompra;
+    private Date fechaCompra;
     private double valorTotal;
     private MetodoPago metodoPago;
 
     //Constructor
 
-    public Compra(int codigoCompra, int fechaCompra, double valorTotal, MetodoPago metodoPago) {
+    public Compra(int codigoCompra, Date fechaCompra, double valorTotal, MetodoPago metodoPago) {
         this.codigoCompra = codigoCompra;
         this.fechaCompra = fechaCompra;
         this.valorTotal = valorTotal;
@@ -33,11 +35,11 @@ public class Compra {
         this.codigoCompra = codigoCompra;
     }
 
-    public int getFechaCompra() {
+    public Date getFechaCompra() {
         return fechaCompra;
     }
 
-    public void setFechaCompra(int fechaCompra) {
+    public void setFechaCompra(Date fechaCompra) {
         this.fechaCompra = fechaCompra;
     }
 

@@ -111,13 +111,12 @@ public class Supermercado {
         return agregado;
     }
 
-    //Metodo para Actualizar
+    //Metodo para Actualizar Cliente
     public boolean actulizarCliente(int documento, Cliente clienteActualizado) {
         boolean estaActualizado = false;
         for (Cliente cliente : listaClientes) {
             if (cliente.getDocumento() == documento) {
                 cliente.setNombre(clienteActualizado.getNombre());
-                cliente.setDocumento(clienteActualizado.getDocumento());
                 cliente.setTelefono(clienteActualizado.getTelefono());
                 cliente.setCorreo(clienteActualizado.getCorreo());
                 estaActualizado = true;
@@ -153,21 +152,6 @@ public class Supermercado {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //Metodo para verificar producto
 
     public boolean verificarProductos (int codigoProductos) {
@@ -196,12 +180,11 @@ public class Supermercado {
 
     public boolean actulizarProducto(int codigoProducto, Producto productoActualizado) {
         boolean estaActualizado = false;
-        for (Compra compra : listaCompra) {
-            if (compra.getCodigoCompra() == codigoProducto) {
-                compra.setNombre(productoActualizado.getFechaCompra());
-                compra.setCodigoCompra(compraActualizada.getCodigoCompra());
-                compra.setValorTotal(compraActualizada.getValorTotal());
-                compra.setMetodoPago(compraActualizada.getMetodoPago());
+        for (Producto producto : listaProductos) {
+            if (producto.getCodigoProducto() == codigoProducto) {
+                producto.setNombre(productoActualizado.getNombre());
+                producto.setPrecioUnitario(productoActualizado.getPrecioUnitario());
+                producto.setCantidad(productoActualizado.getCantidad());
                 estaActualizado = true;
                 break;
             }
@@ -210,27 +193,27 @@ public class Supermercado {
         return estaActualizado;
     }
 
-    //Metodo para eliminar compra
-    public boolean eliminarCompra(int codigoCompra) {
+    //Metodo para eliminar producto
+    public boolean eliminarProducto(int codigoProducto) {
         boolean esEliminado= false;
-        for (Compra compra: listaCompra){
-            if (compra.getCodigoCompra()==codigoCompra){
-                listaCompra.remove(compra);
+        for (Producto producto: listaProductos) {
+            if (producto.getCodigoProducto()==codigoProducto) {
+                listaProductos.remove(producto);
                 esEliminado=true;
             }
         }
         return esEliminado;
     }
 
-    //Metodo para mostrar compra
-    public Compra mostrarCompra(int codigoCompra) {
-        Compra compra1=null;
-        for (Compra compra : listaCompra) {
-            if (compra.getCodigoCompra() == codigoCompra) {
-                compra1 = compra;
+    //Metodo para mostrar producto
+    public Producto mostrarProducto(int codigoProducto) {
+        Producto producto1=null;
+        for (Producto producto : listaProductos) {
+            if (producto.getCodigoProducto() == codigoProducto) {
+                producto1 = producto;
             }
         }
-        return compra1;
+        return producto1;
     }
 
     //Metodo para verificar compra
@@ -264,7 +247,6 @@ public class Supermercado {
         for (Compra compra : listaCompra) {
             if (compra.getCodigoCompra() == codigoCompra) {
                 compra.setFechaCompra(compraActualizada.getFechaCompra());
-                compra.setCodigoCompra(compraActualizada.getCodigoCompra());
                 compra.setValorTotal(compraActualizada.getValorTotal());
                 compra.setMetodoPago(compraActualizada.getMetodoPago());
                 estaActualizado = true;
