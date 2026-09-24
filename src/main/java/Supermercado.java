@@ -1,3 +1,6 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -313,7 +316,13 @@ public class Supermercado {
         }
     }
 
-    public void comenzarCarro() {
+    //Generar un codigo de compra auto
+    private int contadorCompras = 1;
+
+    public int generarCodigo() {
+        return contadorCompras++;
+    }
+    public void comenzarCarro(Cliente cliente) throws ParseException {
         Scanner sc = new Scanner(System.in);
         int opcion = 1;
 
@@ -352,6 +361,35 @@ public class Supermercado {
         } while (opcion != 2);
         calcularTotal();
         System.out.println("Valor total: " + valorTotal);
-    }
 
+        System.out.print("Nuevo metodo de pago: \n"+
+                "1. Tarjeta"+
+                "  2. Transferencia"+
+                "  3. Efectivo");
+        int metodo= sc.nextInt();
+
+        MetodoPago metodoPago = null;
+        if (metodo==1){
+            metodoPago= MetodoPago.TARJETA;
+        } else if (metodo==2) {
+            metodoPago=MetodoPago.TRANSFERENCIA;
+        } else if (metodo==3) {
+            metodoPago= MetodoPago.EFECTIVO;
+        }else {
+            System.out.println("Opción no valida.");
+        }
+
+
+        int codigoCompra = generarCodigo();
+        String fechaTexto= LocalDate.now().toString();
+        SimpleDateFormat formato= new SimpleDateFormat("dd/MM/yyyy");
+        Date fechaCompra= formato.parse(fechaTexto);
+
+
+        Compra nuevaCompra = new Compra(codigoCompra, fechaCompra, valorTotal , metodoPago, cliente);
+
+        // 4. Se la vinculamos al cliente
+        cliente.agregarCompra(nuevaCompra);
+
+    }
 }

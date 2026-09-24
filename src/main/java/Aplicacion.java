@@ -86,7 +86,16 @@ public class Aplicacion {
                         break;
                     case 2:
                         System.out.println("------- Comenzar compra -------\n");
-                        supermercado.comenzarCarro();
+
+                        System.out.print("Ingrese el documento del cliente: ");
+                        documento= sc.nextInt();
+                        cliente= supermercado.mostrarCliente(documento);
+
+                        if (cliente!=null){
+                            supermercado.comenzarCarro(cliente);
+                        }else{
+                            System.out.println("Cliente no encontrado. Debe registrarse antes de comprar.");
+                        }
                         break;
                     case 3:
                         System.out.println("------- Actualizar compra -------\n");
