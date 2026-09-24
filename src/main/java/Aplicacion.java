@@ -1,9 +1,10 @@
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
 public class Aplicacion {
-    static void main() {
+    static void main() throws ParseException {
         Scanner sc= new Scanner(System.in);
         //Objeto supermercado
         Supermercado supermercado= new Supermercado("MarketPlus", "Carrera 18 #29 No.10", 301610544);
@@ -269,65 +270,85 @@ public class Aplicacion {
                         }else if (numeroCategoria==4) {
                             categoria = Categoria.CUIDADOPERSONAL;
                         }else {
-                            System.out.println("Opción no valida.");                    }
+                            System.out.println("Opción no valida.");
+                        }
 
                         Producto producto= new Producto(codigoProducto, nombre, precioUnitario, cantidad, categoria, compra);
-                        if (supermercado.agregarCliente(cliente)){
-                            System.out.println("Cliente agregado correctamente.");
+                        if (supermercado.agregarProducto(producto)){
+                            System.out.println("Producto agregado correctamente.");
                         }else {
-                            System.out.println("Cliente ya existente.");
+                            System.out.println("Producto ya existente.");
                         }
                         break;
                     case 9:
-                        System.out.println("------- Actualizar cliente -------\n");
+                        System.out.println("------- Actualizar producto -------\n");
 
-                        System.out.print("Documento de cliente a actualizar: ");
-                        documento= sc.nextInt();
+                        System.out.print("Codigo producto a actualizar: ");
+                        codigoProducto= sc.nextInt();
                         sc.nextLine();
 
                         System.out.print("Nuevo nombre: ");
-                        String nuevoNombre= sc.nextLine();
+                        nuevoNombre= sc.nextLine();
 
-                        System.out.print("Nuevo telefono: ");
-                        int nuevoTelefono= sc.nextInt();
+                        System.out.print("Nuevo precio unitario: ");
+                        double nuevoPrecioUnitario= sc.nextDouble();
                         sc.nextLine();
 
-                        System.out.print("Nuevo correo: ");
-                        String nuevoCorreo= sc.nextLine();
+                        System.out.print("Nueva cantidad: ");
+                        int nuevaCantidad= sc.nextInt();
 
-                        Cliente clienteActualizado=new Cliente(nuevoNombre, documento, nuevoTelefono, nuevoCorreo);
-                        if (supermercado.actulizarCliente(documento, clienteActualizado)){
-                            System.out.println("Cliente actualizado correctamente.");
+                        System.out.print("Nueva categoria: " +
+                                "1. Alimentos"+
+                                "2. Bebidas"+
+                                "3. Productos de aseo"+
+                                "4. Cuidado personal");
+                        numeroCategoria= sc.nextInt();
+
+                        Categoria nuevaCategoria= null;
+                        if (numeroCategoria==1){
+                            nuevaCategoria= Categoria.ALIMENTOS;
+                        } else if (numeroCategoria==2) {
+                            nuevaCategoria=Categoria.BEBIDAS;
+                        } else if (numeroCategoria==3) {
+                            nuevaCategoria= Categoria.PRODUCTOSDEASEO;
+                        }else if (numeroCategoria==4){
+                            nuevaCategoria= Categoria.CUIDADOPERSONAL;
+                        }else{
+                            System.out.println("Opción no valida.");
+                        }
+                        Producto productoActualizado=new Producto(codigoProducto, nuevoNombre, nuevoPrecioUnitario, nuevaCantidad, nuevaCategoria, compra);
+                        if (supermercado.actulizarProducto(codigoProducto, productoActualizado)){
+                            System.out.println("Producto actualizado correctamente.");
                         }else {
-                            System.out.println("Cliente no encontrado.");
+                            System.out.println("Producto no encontrado.");
                         }
                         break;
                     case 10:
-                        System.out.println("------- Eliminar cliente -------\n");
+                        System.out.println("------- Eliminar producto -------\n");
 
-                        System.out.println("Ingrese el documento del cliente: ");
-                        documento= sc.nextInt();
-                        boolean eliminado= supermercado.eliminarCliente(documento);
+                        System.out.println("Ingrese el codigo de producto: ");
+                        codigoProducto= sc.nextInt();
+                        eliminado= supermercado.eliminarProducto(codigoProducto);
                         if (eliminado){
-                            System.out.println("Cliente eliminado correctamente.");
+                            System.out.println("Producto eliminado correctamente.");
                         }else {
-                            System.out.println("Cliente no encontrado.");
+                            System.out.println("Producto no encontrado.");
                         }
                         break;
                     case 11:
-                        System.out.println("------- Mostrar cliente -------\n");
+                        System.out.println("------- Mostrar producto -------\n");
 
-                        System.out.println("1. Mostrar lista de clientes.");
-                        System.out.println("2. Mostrar cliente por documento.");
-                        int eleccion= sc.nextInt();
+                        System.out.println("1. Mostrar lista de productos.");
+                        System.out.println("2. Mostrar producto por codigo.");
+                        eleccion= sc.nextInt();
                         if (eleccion== 1){
-                            for(Cliente cliente2: supermercado.getListaClientes()){
-                                System.out.println(cliente2);
+                            for(Producto producto1: supermercado.getListaProductos()){
+                                System.out.println(producto1);
                             }
                         } else if (eleccion==2) {
-                            System.out.print("Ingrese el documento del cliente: ");
-                            documento= sc.nextInt();
-                            Cliente cliente2=supermercado.mostrarCliente(documento);
+                            System.out.print("Ingrese el codigo del producto: ");
+                            codigoProducto= sc.nextInt();
+                            Producto producto1=supermercado.mostrarProducto(codigoProducto);
                         }else {
                             System.out.println("Opción no valida.");
                         }
