@@ -7,9 +7,7 @@ public class Cliente {
     private int telefono;
     private String correo;
 
-    //Crear listas
-    private List<Supermercado> listaSupermercado;
-    private List<Producto> listaProductos;
+    //Crear lista
     private List<Compra> listaCompra;
 
     //Relacion Cliente con Compra
@@ -24,9 +22,8 @@ public class Cliente {
         this.correo = correo;
         this.compra = compra;
 
-        //Inicializar listas
-        listaSupermercado = new ArrayList<>();
-        listaProductos = new ArrayList<>();
+        //Inicializar lista
+
         listaCompra = new ArrayList<>();
     }
 
@@ -63,21 +60,21 @@ public class Cliente {
         this.correo = correo;
     }
 
-    public Compra getCompra() { return compra; }
+    public List<Compra> getListaCompra() {
+        return listaCompra;
+    }
 
-    public void setCompra(Compra compra) { this.compra = compra; }
+    public void setListaCompra(List<Compra> listaCompra) {
+        this.listaCompra = listaCompra;
+    }
 
-    public List<Supermercado> getListaSupermercado() { return listaSupermercado; }
+    public Compra getCompra() {
+        return compra;
+    }
 
-    public void setListaSupermercado(List<Supermercado> listaSupermercado) { this.listaSupermercado = listaSupermercado; }
-
-    public List<Producto> getListaProductos() { return listaProductos; }
-
-    public void setListaProductos(List<Producto> listaProductos) { this.listaProductos = listaProductos;}
-
-    public List<Compra> getListaCompra() { return listaCompra;}
-
-    public void setListaCompra(List<Compra> listaCompra) { this.listaCompra = listaCompra; }
+    public void setCompra(Compra compra) {
+        this.compra = compra;
+    }
 
     //TOSTRING
 
@@ -89,8 +86,6 @@ public class Cliente {
                 ", telefono: " + telefono +
                 ", correo: " + correo +
                 ", compra: " + compra +
-                ", listaSupermercado: " + listaSupermercado +
-                ", listaProductos: " + listaProductos +
                 ", listaCompra: " + listaCompra;
     }
 
@@ -98,5 +93,7 @@ public class Cliente {
     public void agregarCompra(Compra compra) {
         this.listaCompra.add(compra);
     }
+
+    //sa
 }
 

@@ -16,11 +16,6 @@ public class DetalleCompra {
         this.cantidad = cantidad;
     }
 
-    //Metodos
-    public double calcularSubtotal() {
-        return producto.getPrecioUnitario() * cantidad;
-    }
-
     public Producto getProducto() {
         return producto;
     }
@@ -33,5 +28,9 @@ public class DetalleCompra {
     public String toString() {
         return producto.getNombre() + " Cantidad: " + cantidad + " = $" + calcularSubtotal();
 
+    }
+    //Metodos
+    public double calcularSubtotal() {
+        return producto.getPrecioUnitario() * cantidad;
     }
 }
