@@ -367,6 +367,7 @@ public class Supermercado {
                 "  2. Transferencia"+
                 "  3. Efectivo");
         int metodo= sc.nextInt();
+        sc.nextLine();
 
         MetodoPago metodoPago = null;
         if (metodo==1){
@@ -382,7 +383,7 @@ public class Supermercado {
 
         int codigoCompra = generarCodigo();
 
-        System.out.print("Nuevo fecha de compra: ");
+        System.out.print("Fecha de compra: ");
         String fechaTexto= sc.nextLine();
         SimpleDateFormat formato= new SimpleDateFormat("dd/MM/yyyy");
         Date fechaCompra= formato.parse(fechaTexto);
