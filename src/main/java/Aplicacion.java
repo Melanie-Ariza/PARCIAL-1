@@ -1,10 +1,8 @@
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Aplicacion {
-    static void main() throws ParseException {
+    static void main(){
         Scanner sc= new Scanner(System.in);
         //Objeto supermercado
         Supermercado supermercado= new Supermercado("MarketPlus", "Carrera 18 #29 No.10", 301610544);
@@ -61,6 +59,7 @@ public class Aplicacion {
                 System.out.println("2. Comenzar compra.");
                 System.out.println("3. Actualizar compra.");
                 System.out.println("4. Eliminar compra.");
+                System.out.println("5. Mostrar cliente.");
                 System.out.print("Seleccione la opción: ");
                 opcion= sc.nextInt();
                 sc.nextLine();
@@ -104,10 +103,7 @@ public class Aplicacion {
                         int codigoCompra= sc.nextInt();
                         sc.nextLine();
 
-                        System.out.print("Nuevo fecha de compra: ");
-                        String fechaTexto= sc.nextLine();
-                        SimpleDateFormat formato= new SimpleDateFormat("dd/MM/yyyy");
-                        Date nuevaFecha= formato.parse(fechaTexto);
+                        LocalDate nuevaFecha = LocalDate.now();
 
                         System.out.print("Nuevo valor total: ");
                         double nuevoValorTotal= sc.nextDouble();
@@ -152,6 +148,15 @@ public class Aplicacion {
                             System.out.println("Compra no encontrada.");
                         }
                         break;
+                    case 5:
+                        System.out.println("------- Mostrar cliente -------\n");
+                            System.out.print("Ingrese el documento del cliente: ");
+                            documento= sc.nextInt();
+                            Cliente mostrarCliente=supermercado.mostrarCliente(documento);
+                            System.out.println(mostrarCliente);
+
+                        break;
+
                     default:
                         System.out.println("Opción no valida.");
                         break;
@@ -264,10 +269,7 @@ public class Aplicacion {
                         System.out.print("Codigo compra: ");
                         int codigoCompra= sc.nextInt();
 
-                        System.out.print("Fecha Compra: ");
-                        String fechaTexto= sc.nextLine();
-                        SimpleDateFormat formato= new SimpleDateFormat("dd/MM/yyyy");
-                        Date fechaCompra= formato.parse(fechaTexto);
+                        LocalDate fechaCompra = LocalDate.now();
 
                         System.out.print("Valor total: ");
                         double valorTotal= sc.nextInt();
@@ -307,10 +309,7 @@ public class Aplicacion {
                         codigoCompra= sc.nextInt();
                         sc.nextLine();
 
-                        System.out.print("Nuevo fecha de compra: ");
-                        fechaTexto= sc.nextLine();
-                        formato= new SimpleDateFormat("dd/MM/yyyy");
-                        Date nuevaFecha= formato.parse(fechaTexto);
+                        LocalDate nuevaFecha = LocalDate.now();
 
                         System.out.print("Nuevo valor total: ");
                         double nuevoValorTotal= sc.nextDouble();

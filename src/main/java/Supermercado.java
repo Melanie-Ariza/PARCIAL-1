@@ -1,8 +1,5 @@
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -294,7 +291,7 @@ public class Supermercado {
     }
 
     //Metodo ventas por fecha
-    public double ventasPorFecha(Date fechaCompra) {
+    public double ventasPorFecha(LocalDate fechaCompra) {
         double acumulado = 0;
         for (Compra compra : listaCompras) {
             if (compra.getFechaCompra() == fechaCompra) {
@@ -322,7 +319,7 @@ public class Supermercado {
     public int generarCodigo() {
         return contadorCompras++;
     }
-    public void comenzarCarro(Cliente cliente) throws ParseException {
+    public void comenzarCarro(Cliente cliente) {
         Scanner sc = new Scanner(System.in);
         int opcion = 1;
 
@@ -383,10 +380,7 @@ public class Supermercado {
 
         int codigoCompra = generarCodigo();
 
-        System.out.print("Fecha de compra: ");
-        String fechaTexto= sc.nextLine();
-        SimpleDateFormat formato= new SimpleDateFormat("dd/MM/yyyy");
-        Date fechaCompra= formato.parse(fechaTexto);
+        LocalDate fechaCompra = LocalDate.now();
 
 
         Compra nuevaCompra = new Compra(codigoCompra, fechaCompra, valorTotal , metodoPago, cliente);

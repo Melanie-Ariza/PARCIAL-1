@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -5,7 +6,7 @@ import java.util.List;
 public class Compra {
     //Atributos
     private int codigoCompra;
-    private Date fechaCompra;
+    private LocalDate fechaCompra;
     private double valorTotal;
     private MetodoPago metodoPago;
     private Cliente cliente;
@@ -15,7 +16,7 @@ public class Compra {
 
     //Constructor
 
-    public Compra(int codigoCompra, Date fechaCompra, double valorTotal, MetodoPago metodoPago, Cliente cliente) {
+    public Compra(int codigoCompra, LocalDate fechaCompra, double valorTotal, MetodoPago metodoPago, Cliente cliente) {
         this.codigoCompra = codigoCompra;
         this.fechaCompra = fechaCompra;
         this.valorTotal = 0.0;
@@ -46,12 +47,12 @@ public class Compra {
         this.codigoCompra = codigoCompra;
     }
 
-    public Date getFechaCompra() {
+    public LocalDate getFechaCompra() {
 
         return this.fechaCompra;
     }
 
-    public void setFechaCompra(Date fechaCompra) {
+    public void setFechaCompra(LocalDate fechaCompra) {
         this.fechaCompra = fechaCompra;
     }
 
